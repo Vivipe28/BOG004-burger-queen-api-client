@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ViewLoginComponent } from './view-login/view-login.component';
-import { MenuViewComponent } from './menu-view/menu-view.component';
+import { ViewLoginComponent } from './components/view-login/view-login.component';
+import { MenuViewComponent } from './components/menu-view/menu-view.component';
 
 @NgModule({
   declarations: [

@@ -12,13 +12,9 @@ export class MenuViewComponent implements OnInit {
   }
 
   decreaseCounter(): void{
-    this.counter --;
-  }
-
-  precios = [12,5]
-
-  get total():number{
-    return this.precios[0]+this.precios[1]
+    if(this.counter > 0){
+      this.counter --
+    };
   }
 
   constructor() { }

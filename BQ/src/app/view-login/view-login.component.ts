@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,9 +9,11 @@ import {Router} from '@angular/router';
 })
 export class ViewLoginComponent implements OnInit {
   
-  mostrar(): void{
-    alert('Atrapando el evento')
-  }
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    rol: new FormControl('')
+  })
   constructor(private router:Router) { }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@ body{
     background-color: #FFD118;
     display: flex;        
     justify-content: center;
-    background-image: url('../../assets/hamburguer.png');
+    background-image: url('../../../assets/hamburguer.png');
     backdrop-filter: blur(2px);
     background-repeat: no-repeat;
     background-attachment: fixed;

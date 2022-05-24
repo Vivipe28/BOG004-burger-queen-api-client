@@ -1,0 +1,69 @@
+<body>
+    <div class="header">
+        <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
+        <div class="infoClient">
+            <h3>Nombre del cliente</h3>
+            <input type="text" name="clientName" class="clientName">
+        </div>
+    </div>
+
+    <div class="menuButtons">
+        <button class="breakfast">DESAYUNO</button>
+        <button class="lunch">ALMUERZO</button>
+    </div>
+
+    <table class="menuTable">
+        <tr>
+            <th>Cantidad</th>
+            <th>Producto</th>
+            <th>Precio</th>
+        </tr>
+
+        <tr>
+            <td> <button (click)="decreaseCounter()">-</button> {{counter}} <button (click)="increaseCounter()">+</button> </td>
+            <td>AMERICANO</td>
+            <td>$ 5</td>
+        </tr>
+
+        <tr>
+            <td> - 1 + </td>
+            <td>CAFÉ CON LECHE</td>
+            <td>$ 7</td>
+        </tr>
+
+        <tr>
+            <td> - 1 + </td>
+            <td>JUGO DE FRUTAS</td>
+            <td>$ 5</td>
+        </tr>
+
+    </table>
+    <table class="menuTable">
+        <tr>
+            <th>Cantidad</th>
+            <th>Producto</th>
+            <th>Precio</th>
+        </tr>
+
+        <tr>
+            <td> 1 </td>
+            <td>AMERICANO</td>
+            <td>$ 5</td>
+        </tr>
+
+        <tr>
+            <td> 1 </td>
+            <td>CAFÉ CON LECHE</td>
+            <td>$ 7</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: right; padding-right:11rem; color:#8D0000">TOTAL</td>
+            <td>{{total}}</td>
+        </tr>
+
+    </table>
+
+    <button class="sendOrder">ENVIAR PEDIDO</button>
+
+</body>

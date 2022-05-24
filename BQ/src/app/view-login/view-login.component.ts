@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'view-login',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-login.component.css']
 })
 export class ViewLoginComponent implements OnInit {
-
-  constructor() { }
+  
+  mostrar(): void{
+    alert('Atrapando el evento')
+  }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigation(): void {
+    this.router.navigate(['/menu'])
   }
 
 }

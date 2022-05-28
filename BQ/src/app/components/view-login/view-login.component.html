@@ -2,7 +2,7 @@
     <div class="containt">
         <img src="./../assets/Ellipse 2.png" alt="logo-BQ" class="logo">
         <div class="div-form">
-            <form [formGroup] = 'loginForm'>
+            <form [formGroup]= 'loginForm' (click)="onSubmit()">
                 <ul>
                     <li>
                         <label for="email">Email:</label><br>
@@ -18,7 +18,7 @@
                             <option value="">--Please choose a rol--</option>
                             <option value="waiter">Waiter</option>
                             <option value="chef">Chef</option>
-                            <option value="manager">Manager</option>
+                            <option value="admin">Manager</option>
                         </select>
                     </li>
                     <li class="button">

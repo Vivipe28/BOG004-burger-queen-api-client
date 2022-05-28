@@ -12,7 +12,7 @@ import { MenuViewComponent } from './components/menu-view/menu-view.component';
   declarations: [
     AppComponent,
     ViewLoginComponent,
-    MenuViewComponent
+    MenuViewComponent,
   ],
   imports: [
     BrowserModule,

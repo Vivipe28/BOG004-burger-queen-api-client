@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import {Router} from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginObject } from '../models/LoginObject';
+import { AuthService } from './http.service';
 
 @Component({
   selector: 'view-login',
@@ -8,19 +9,30 @@ import {Router} from '@angular/router';
   styleUrls: ['./view-login.component.css']
 })
 export class ViewLoginComponent implements OnInit {
+
+  loginForm!: FormGroup;
+  login: LoginObject = {
+    email: '',
+    password: '',
+  };
   
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    rol: new FormControl('')
-  })
-  constructor(private router:Router) { }
+ 
+  constructor(private httpServices: AuthService ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.loginForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      rol: new FormControl('', Validators.required)
+    })
   }
 
-  navigation(): void {
-    this.router.navigate(['/menu'])
-  }
 
+  onSubmit(){
+    this.login = {
+      email: this.loginForm.value['email'],
+      password: this.loginForm.value['password'],
+    }
+    this.httpServices.login(this.login.email, this.login.password);
+}
 }

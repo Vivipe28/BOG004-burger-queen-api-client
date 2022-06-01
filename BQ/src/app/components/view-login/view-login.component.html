@@ -12,22 +12,14 @@
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" formControlName="password">
                     </li>
-                    <li>
-                        <label for="rol">Rol:</label><br>
-                        <select id="rol" name="rol" formControlName="rol">
-                            <option value="">--Please choose a rol--</option>
-                            <option value="waiter">Waiter</option>
-                            <option value="chef">Chef</option>
-                            <option value="manager">Manager</option>
-                        </select>
-                    </li>
                     <li class="button">
-                        <button (click)='navigation()' type="submit" id="login">LOGIN</button>
+                        <button (click)='onSubmit()' type="submit" id="login">LOGIN</button>
                     </li>
+                    <span class="errorMessage"></span>
                 </ul>
             </form>
         </div>
     </div>
 
-    <pre>{{loginForm.value | json}}</pre>
+    <!-- <pre>{{loginForm.value | json}}</pre> -->
 </body>

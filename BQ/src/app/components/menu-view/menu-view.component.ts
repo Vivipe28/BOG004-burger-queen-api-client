@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/order';
+import { AuthService } from '../view-login/http.service';
+import { menuService } from './menu-view.service';
+
 
 @Component({
   selector: 'menu-view',
@@ -6,20 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-view.component.css']
 })
 export class MenuViewComponent implements OnInit {
-  counter = 0;
-  increaseCounter(): void{
-    this.counter ++;
-  }
 
-  decreaseCounter(): void{
-    if(this.counter > 0){
-      this.counter --
-    };
-  }
+  get orders(): Order[] {
+    return this.menuViewService.items}
 
-  constructor() { }
+  get Total(): number {
+    return this.menuViewService.Total;
+  }
+  constructor(private menuViewService: menuService,
+    private authservice: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  logOut(){
+    console.log('you are out');
+    this.authservice.logout()
+  }
+  deleteOrder(productToDelete: Order): void {
+    this.menuViewService.deleteOrder(productToDelete)
   }
 
 }

@@ -7,12 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewLoginComponent } from './components/view-login/view-login.component';
 import { MenuViewComponent } from './components/menu-view/menu-view.component';
+import { OrderComponent } from './order/order.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewLoginComponent,
-    MenuViewComponent
+    MenuViewComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+.coffee_cup{
+    width: 3%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+:host{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem;
+    background-color: white;
+    border-radius: 3px;
+    padding: 1rem;
+    box-shadow: 2px 2px 4px rgb(196, 196, 190);
+}

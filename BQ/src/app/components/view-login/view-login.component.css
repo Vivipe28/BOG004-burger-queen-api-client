@@ -78,18 +78,6 @@ input{
     text-align: center;
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.2) inset;
 }
-select, option{
-    width: 90%;
-    height: 30px;
-    background-color: #8D0000;
-    border-radius: 50px;
-    border: 0;
-    outline: none;
-    font-size: 95%;
-    color: #F8F5E7;
-    text-align: center;
-}
-
 
 button{
     margin: 2%;

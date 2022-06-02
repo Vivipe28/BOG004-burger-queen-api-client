@@ -2,7 +2,7 @@
     <div class="containt">
         <img src="./../assets/Ellipse 2.png" alt="logo-BQ" class="logo">
         <div class="div-form">
-            <form [formGroup]= 'loginForm' (click)="onSubmit()">
+            <form [formGroup]= 'loginForm'>
                 <ul>
                     <li>
                         <label for="email">Email:</label><br>
@@ -12,22 +12,11 @@
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" formControlName="password">
                     </li>
-                    <li>
-                        <label for="rol">Rol:</label><br>
-                        <select id="rol" name="rol" formControlName="rol">
-                            <option value="">--Please choose a rol--</option>
-                            <option value="waiter">Waiter</option>
-                            <option value="chef">Chef</option>
-                            <option value="admin">Manager</option>
-                        </select>
-                    </li>
                     <li class="button">
-                        <button (click)='navigation()' type="submit" id="login">LOGIN</button>
+                        <button type="submit" id="login" (click)="onSubmit()">LOGIN</button>
                     </li>
                 </ul>
             </form>
         </div>
     </div>
-
-    <pre>{{loginForm.value | json}}</pre>
 </body>

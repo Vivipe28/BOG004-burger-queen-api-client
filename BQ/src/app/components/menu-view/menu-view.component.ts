@@ -24,6 +24,7 @@ export class MenuViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // ejemplo de productos
     this.productsItem = [
       {
         id: 0,

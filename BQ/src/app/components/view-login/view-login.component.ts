@@ -15,34 +15,49 @@ export class ViewLoginComponent implements OnInit {
   login: LoginObject = {
     email: '',
     password: '',
-    rol: '',
+    // rol: '',
   };
+  userData: any;
+
   constructor(private router:Router, private infoService: InfoService) { }
   
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      rol: new FormControl('', Validators.required)
+      // rol: new FormControl('', Validators.required)
     })
   }
   onSubmit(){
     this.login = {
       email: this.loginForm.value['email'],
       password: this.loginForm.value['password'],
-      rol: this.loginForm.value['rol']
+      // rol: this.loginForm.value['rol']
     }
     this.infoService.login(this.login.email, this.login.password)
     .subscribe(
       (response) => {
-        console.log(response.accessToken);
-        sessionStorage.setItem('name', JSON.stringify(response.accessToken));
+        console.log(response)
+        if (response) {
+          this.userData = response;
+          sessionStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(sessionStorage.getItem('user')!);
+          // JSON.parse(localStorage.getItem('user')!);
+        } else {
+          sessionStorage.setItem('user', 'null');
+          JSON.parse(localStorage.getItem('user')!);
+        }
+      });
+        // console.log(response.accessToken); //mostrando el HTTP request 
+        // sessionStorage.setItem('name', JSON.stringify(response));
+        // this.router.navigate(['/menu'])
         // this.loginForm.value =response;
       }
-    )
-  }
-
-  navigation(): void {
-    this.router.navigate(['/menu'])
-  }
+      get isLoggedIn(): boolean {
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        return user !== 'null' ? true : false;
+      }
 }
+
+
+

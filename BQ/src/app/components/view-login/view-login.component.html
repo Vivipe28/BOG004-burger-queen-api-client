@@ -7,19 +7,27 @@
                     <li>
                         <label for="email">Email:</label><br>
                         <input type="text" id="email" name="email" formControlName="email">
+                        <div class="errorContainer" *ngIf="emailControl.invalid && (emailControl.touched || emailControl.dirty)">
+                            <p class="errorMsg" *ngIf="emailControl.hasError('required')">El campo es obligatorio</p>
+                            <p class="errorMsg" *ngIf="emailControl.hasError('email')">El campo debe ser un email válido</p>
+                        </div>
                     </li>
                     <li>
                         <label for="password">Password:</label><br>
                         <input type="password" id="password" name="password" formControlName="password">
+                        <div class="errorContainer" *ngIf="passwordControl.invalid && (passwordControl.touched || passwordControl.dirty)">
+                            <p class="errorMsg" *ngIf="passwordControl.hasError('required')">El campo es obligatorio</p>
+                        </div>
                     </li>
                     <li class="button">
-                        <button (click)='onSubmit()' type="submit" id="login">LOGIN</button>
+                        <button (click)='onSubmit()' type="submit" id="login" >LOGIN</button>
+                        <div class="errorCont" *ngIf="">
+                            <p>Usuario o contraseña incorrectas</p>
+                        </div>
                     </li>
                     <span class="errorMessage"></span>
                 </ul>
             </form>
         </div>
     </div>
-
-    <!-- <pre>{{loginForm.value | json}}</pre> -->
 </body>

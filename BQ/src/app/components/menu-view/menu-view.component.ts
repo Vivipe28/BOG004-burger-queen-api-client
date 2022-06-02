@@ -31,4 +31,16 @@ export class MenuViewComponent implements OnInit {
     this.menuViewService.deleteOrder(productToDelete)
   }
 
+  getuser(){
+    this.menuViewService.getUser().subscribe(
+      res => {
+        console.log(res);
+        ;
+      },
+      err =>{
+        console.log(err);
+      }
+    )
+  }
+
 }

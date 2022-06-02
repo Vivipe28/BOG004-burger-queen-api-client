@@ -1,10 +1,15 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Order } from "src/app/order";
 
 @Injectable({
     providedIn: 'root',
 })
 export class menuService {
+
+    url = 'http://localhost:8080';
+
     items: Order[] = [
         {
             image: 'hamburguer.png',
@@ -34,5 +39,11 @@ export class menuService {
         this.items = this.items.filter(
             product => product !== productToDelete
         )
+    }
+
+    constructor(private http: HttpClient, private router: Router) { }
+
+    getUser(){
+       return this.http.get(this.url + '/users')
     }
 }

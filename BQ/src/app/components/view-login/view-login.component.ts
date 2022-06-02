@@ -15,15 +15,21 @@ export class ViewLoginComponent implements OnInit {
     email: '',
     password: '',
   };
+
+  get emailControl():FormControl {
+    return this.loginForm.get('email') as FormControl
+  }
+
+  get passwordControl():FormControl {
+    return this.loginForm.get('password') as FormControl
+  }
   
- 
   constructor(private httpServices: AuthService ) { }
 
   ngOnInit(){
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
-      rol: new FormControl('', Validators.required)
     })
   }
 
@@ -33,6 +39,6 @@ export class ViewLoginComponent implements OnInit {
       email: this.loginForm.value['email'],
       password: this.loginForm.value['password'],
     }
-    this.httpServices.login(this.login.email, this.login.password);
+    this.httpServices.login(this.login.email, this.login.password)
 }
 }

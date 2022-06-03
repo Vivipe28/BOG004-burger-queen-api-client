@@ -4,22 +4,23 @@ body{
     background-color: #FFD118;
     display: flex;        
     justify-content: center;
-    background-image: url('../../../assets/hamburguer.png');
-    backdrop-filter: blur(2px);
+    background-image: url('../../../assets/blackBurger.jpg');
+    
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    height: 100vh;
 }
 
 .containt{
     margin: 2%;
-    width: 80%;
-    height: 100vh;
-    background-color: #ffffff7a;
+    width: 60%;
+    background-color: #ffffff35;
     display:flex;
     flex-direction: column;
     align-items: center;
+    backdrop-filter: blur(2px);
 } 
 
 .div-form{
@@ -39,16 +40,16 @@ form{
 
 ul{
     width: 80%;
-    padding: 0;
-    margin: 0;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10%;
+    text-align: center;
     
 }
 
 li {
     list-style: none;
     width: 100%;
-    display:flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -63,20 +64,21 @@ label{
     font-family: 'Graduate', cursive;
     font-size: 26px;
     text-align: start;
+    color: #FFD118;
 }
 
 input{
     width: 90%;
     height: 30px;
-    margin-bottom: 1%;
-    background-color: #8D0000;
+    margin-top: 3%;
     border-radius: 50px;
     border: 0;
     outline: none;
     font-size: 95%;
-    color: #F8F5E7;
+    color: black;
     text-align: center;
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.2) inset;
+    background-color: #FFF7D2;
 }
 
 button{
@@ -84,8 +86,24 @@ button{
     width: 30%;
     height: 40px;
     font-size: 98%;
-    -webkit-text-stroke: 1px black;
+    font-weight: bolder;
     background-color: #FFD118;
     border: none;
+    border-radius: 5px;
+    box-shadow: rgba(163, 158, 147, 0.2) 1px 1px 1px 2px ;
 }
 
+button:hover{
+    background-color: #8D0000;
+    color: #FFF7D2;
+}
+
+.ng-touched.ng-invalid:is(input, textarea),
+.ng-dirty.ng-invalid:is(input, textarea){
+    border: #8D0000 3px solid;
+}
+
+.errorMsg{
+    color:#FFD118;
+    margin-top: 2%;
+}

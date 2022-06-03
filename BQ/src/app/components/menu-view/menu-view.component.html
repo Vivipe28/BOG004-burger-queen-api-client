@@ -8,63 +8,22 @@
     </div>
 
     <div class="menuButtons">
-        <button class="breakfast">DESAYUNO</button>
+        <button class="breakfast" (click)="getuser()">DESAYUNO</button>
         <button class="lunch">ALMUERZO</button>
     </div>
 
-    <table class="menuTable">
-        <tr>
-            <th>Cantidad</th>
-            <th>Producto</th>
-            <th>Precio</th>
-        </tr>
+    <div class="menuList">
+    <h2 class="menuTitle">MENU</h2>
 
-        <tr *ngFor="let item of productsItem">
-            <!-- <td> <button (click)="decreaseCounter()">-</button> qhubo <button (click)="increaseCounter()">+</button> </td> -->
-            <td><button>-</button> {{item.qty}} <button>+</button></td>
-            <td>{{item.name}}</td>
-            <td>{{item.price | currency}}</td>
-        </tr>
+    <app-order 
+    *ngFor="let product of orders" 
+    [order]="product"
+    (orderDelete)="deleteOrder(product)"></app-order>
+   
 
-        <!-- <tr>
-            <td> - 1 + </td>
-            <td>CAFÉ CON LECHE</td>
-            <td>$ 7</td>
-        </tr>
+    <p class="total"><span class="total-label">Total:</span> $ {{Total}}</p>
 
-        <tr>
-            <td> - 1 + </td>
-            <td>JUGO DE FRUTAS</td>
-            <td>$ 5</td>
-        </tr> -->
-
-    </table>
-    <table class="menuTable">
-        <tr>
-            <th>Cantidad</th>
-            <th>Producto</th>
-            <th>Precio</th>
-        </tr>
-
-        <tr>
-            <td> 1 </td>
-            <td>AMERICANO</td>
-            <td>$ 5</td>
-        </tr>
-
-        <tr>
-            <td> 1 </td>
-            <td>CAFÉ CON LECHE</td>
-            <td>$ 7</td>
-        </tr>
-
-        <tr>
-            <td colspan="2" style="text-align: right; padding-right:11rem; color:#8D0000">TOTAL</td>
-            <td>12</td>
-        </tr>
-
-    </table>
-
-    <button class="sendOrder">ENVIAR PEDIDO</button>
+    <button class="sendOrder" (click)="logOut()">Finalizar pedido</button>
+</div>
 
 </body>

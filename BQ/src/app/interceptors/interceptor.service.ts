@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../components/view-login/http.service';
+import { AuthService } from '../../app/services/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,6 @@ export class InterceptorService implements HttpInterceptor{
     
     console.log('El interceptor esta funcionando');
     console.log(JSON.parse(this.authservice.getToken()!));
-
     const Token = req.clone({
       setHeaders:{
         authorization: `Bearer ${JSON.parse(this.authservice.getToken()!)}`

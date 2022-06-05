@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/order';
-import { AuthService } from '../view-login/http.service';
-import { menuService } from './menu-view.service';
+import { Order } from 'src/app/components/models/order';
+import { AuthService } from '../../services/http.service';
+import { menuService } from '../../services/menu-view.service';
 
 
 @Component({
@@ -21,6 +21,33 @@ export class MenuViewComponent implements OnInit {
     private authservice: AuthService) { }
 
   ngOnInit(): void {
+    // ejemplo de productos
+    // this.productsItem = [
+    //   {
+    //     id: 0,
+    //     qty: 0,
+    //     name: 'Café Americano',
+    //     price: 5,
+    //   },
+    //   {
+    //     id: 1,
+    //     qty: 1,
+    //     name: 'Agua',
+    //     price: 500,
+    //   },
+    //   {
+    //     id: 0,
+    //     qty: 1,
+    //     name: 'Gaseosa',
+    //     price: 5000,
+    //   },
+    //   {
+    //     id: 0,
+    //     qty: 1,
+    //     name: 'Gaseosa',
+    //     price: 5000,
+    //   },
+    // ]
   }
 
   logOut(){

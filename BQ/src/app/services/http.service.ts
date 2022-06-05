@@ -10,7 +10,6 @@ import { catchError, throwError} from "rxjs";
 export class AuthService {
 
     url = 'http://localhost:8080';
-    token: any;
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,23 +19,33 @@ export class AuthService {
                 catchError(this.errorHandler)
             )
             .subscribe((resp: any) => {
-                console.log(resp);
-                sessionStorage.setItem('userToken', JSON.stringify(resp.accessToken));
-                // localStorage.setItem('user', JSON.stringify(resp));
-                this.router.navigate(['/menu']);
+                sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
+                localStorage.setItem('user', JSON.stringify(resp.user.roles));
+                if(resp.user.roles.waiter){
+                    this.router.navigate(['/menu']);
+                } else if (resp.user.roles.chef){
+                    this.router.navigate(['/chef']);
+                } else if (resp.user.roles.admin){
+                    this.router.navigate(['/admin']);
+                }
             })
     }
 
+    getUser() {
+        console.log(localStorage.getItem('user'))
+        return localStorage.getItem('user')
+    }
+
     getToken() {
-        return sessionStorage.getItem('userToken')
+        return sessionStorage.getItem('token')
     }
     
     public get logIn(): boolean {
-        return (sessionStorage.getItem('userToken') !== null);
+        return (sessionStorage.getItem('token') !== null);
     }
 
     logout() {
-        sessionStorage.removeItem('userToken');
+        sessionStorage.removeItem('token');
         this.router.navigate(['/login'])
     }
 

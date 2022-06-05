@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Order } from '../order';
+import { Order } from '../components/models/order';
 
 @Component({
   selector: 'app-order',

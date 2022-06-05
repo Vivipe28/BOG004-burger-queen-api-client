@@ -9,6 +9,8 @@ import { ViewLoginComponent } from './components/view-login/view-login.component
 import { MenuViewComponent } from './components/menu-view/menu-view.component';
 import { OrderComponent } from './order/order.component';
 import { InterceptorService } from './interceptors/interceptor.service';
+import { ViewChefComponent } from './components/view-chef/view-chef.component';
+import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 
 
 
@@ -18,6 +20,8 @@ import { InterceptorService } from './interceptors/interceptor.service';
     ViewLoginComponent,
     MenuViewComponent,
     OrderComponent,
+    ViewChefComponent,
+    ViewAdminComponent,
   ],
   imports: [
     BrowserModule,

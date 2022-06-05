@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginObject } from '../models/LoginObject';
-import { AuthService } from './http.service';
+import { AuthService } from '../../services/http.service';
 
 @Component({
   selector: 'view-login',
@@ -42,3 +42,6 @@ export class ViewLoginComponent implements OnInit {
     this.httpServices.login(this.login.email, this.login.password)
 }
 }
+
+
+

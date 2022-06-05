@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Order } from "src/app/order";
+import { Order } from "src/app/components/models/order";
 
 @Injectable({
     providedIn: 'root',
@@ -44,6 +44,6 @@ export class menuService {
     constructor(private http: HttpClient, private router: Router) { }
 
     getUser(){
-       return this.http.get(this.url + '/users')
+    return this.http.get(this.url + '/users')
     }
 }

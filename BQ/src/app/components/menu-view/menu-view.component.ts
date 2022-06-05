@@ -41,6 +41,7 @@ export class MenuViewComponent implements OnInit {
         console.log(err);
       }
     )
+    
   }
 
 }

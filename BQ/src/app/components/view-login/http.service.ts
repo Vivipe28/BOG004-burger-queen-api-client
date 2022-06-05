@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from '@angular/router';
-import { catchError} from "rxjs";
+import { catchError, throwError} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -17,30 +17,31 @@ export class AuthService {
     login(email: string, password: string) {
         return this.http.post(this.url + '/login', { email: email, password: password })
             .pipe(
-                catchError(async (error) => this.errorHandler(error))
+                catchError(this.errorHandler)
             )
             .subscribe((resp: any) => {
                 console.log(resp);
-                sessionStorage.setItem('user', JSON.stringify(resp));
+                sessionStorage.setItem('userToken', JSON.stringify(resp.accessToken));
+                // localStorage.setItem('user', JSON.stringify(resp));
                 this.router.navigate(['/menu']);
             })
     }
 
     getToken() {
-        return sessionStorage.getItem('user')
+        return sessionStorage.getItem('userToken')
     }
     
     public get logIn(): boolean {
-        return (sessionStorage.getItem('user') !== null);
+        return (sessionStorage.getItem('userToken') !== null);
     }
 
     logout() {
-        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('userToken');
         this.router.navigate(['/login'])
     }
 
     errorHandler(error: HttpErrorResponse) {
         alert('usuario o contraseña incorrecta')
-        return error
+        return throwError(error)
     }
 }

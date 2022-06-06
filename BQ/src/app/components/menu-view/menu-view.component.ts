@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/components/models/order';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
+import { IProductsItem } from '../../components/models/products-item'
 
 
 @Component({
@@ -11,6 +13,8 @@ import { menuService } from '../../services/menu-view.service';
 })
 export class MenuViewComponent implements OnInit {
 
+  public products: any = [];
+  
   get orders(): Order[] {
     return this.menuViewService.items}
 
@@ -18,11 +22,11 @@ export class MenuViewComponent implements OnInit {
     return this.menuViewService.Total;
   }
   constructor(private menuViewService: menuService,
-    private authservice: AuthService) { }
+    private authservice: AuthService, private snackservice: NotifierService,) { }
 
   ngOnInit(): void {
     // ejemplo de productos
-    // this.productsItem = [
+    // this.ProductsItem = [
     //   {
     //     id: 0,
     //     qty: 0,
@@ -51,6 +55,7 @@ export class MenuViewComponent implements OnInit {
   }
 
   logOut(){
+    
     console.log('you are out');
     this.authservice.logout()
   }
@@ -60,14 +65,15 @@ export class MenuViewComponent implements OnInit {
 
   getuser(){
     this.menuViewService.getUser().subscribe(
-      res => {
-        console.log(res);
-        ;
+      (res: any) => {
+        this.products = res
+        console.log(res[1].image);
       },
       err =>{
         console.log(err);
       }
     )
+    
   }
 
 }

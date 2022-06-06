@@ -6,13 +6,15 @@ import { ViewChefComponent } from './components/view-chef/view-chef.component'
 import { ViewAdminComponent } from './components/view-admin/view-admin.component'
 import { AuthGuard } from './shared/auth.guard';
 import { SecureInnerPagesGuard } from './shared/secure-inner-pages.guard';
+import { Page404Component } from './components/page404/page404.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component: ViewLoginComponent},
-  {path:'menu', component: MenuViewComponent, canActivate:[AuthGuard]},
-  {path:'chef', component: ViewChefComponent, canActivate:[SecureInnerPagesGuard]},
-  {path:'admin', component: ViewAdminComponent, canActivate:[SecureInnerPagesGuard]},
+  {path:'menu', component: MenuViewComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"waiter":true}}},
+  {path:'chef', component: ViewChefComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"chef":true}}},
+  {path:'admin', component: ViewAdminComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"admin":true}}},
+  {path:'error', component: Page404Component}
 ];
 
 @NgModule({

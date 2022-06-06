@@ -40,6 +40,7 @@ export class ViewLoginComponent implements OnInit {
       password: this.loginForm.value['password'],
     }
     this.httpServices.login(this.login.email, this.login.password)
+    
 }
 }
 

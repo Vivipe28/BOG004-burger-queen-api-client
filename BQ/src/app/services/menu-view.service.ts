@@ -1,7 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 import { Order } from "src/app/components/models/order";
+import { IProductsItem } from "../components/models/products-item";
 
 @Injectable({
     providedIn: 'root',
@@ -43,7 +45,8 @@ export class menuService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    getUser(){
-    return this.http.get(this.url + '/users')
+    getUser(): Observable<IProductsItem>{
+        const path = this.url + '/products'
+    return this.http.get<IProductsItem>(path)
     }
 }

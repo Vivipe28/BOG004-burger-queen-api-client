@@ -11,6 +11,7 @@ import { OrderComponent } from './order/order.component';
 import { InterceptorService } from './interceptors/interceptor.service';
 import { ViewChefComponent } from './components/view-chef/view-chef.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ViewAdminComponent } from './components/view-admin/view-admin.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

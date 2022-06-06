@@ -7,15 +7,20 @@ import { AuthService } from '../services/http.service';
   providedIn: 'root'
 })
 export class SecureInnerPagesGuard implements CanActivate {
-  constructor(public authService: AuthService, public router: Router){}
+  constructor(public authService: AuthService, public router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(JSON.parse(this.authService.getUser()!))
-      if (this.authService.getUser()!) {
-        window.alert('Access Denied, Login is Required to Access This Page!');
-        this.router.navigate(['/menu']);}
+    const user = this.authService.getUser();
+    const permission = JSON.stringify(route.data['roles']);
+    const auth = this.authService.logIn
+
+    if (user !== permission && auth === true) {
+      alert('No permission to access')
+      this.router.navigate(['/error'])
+    }
+
     return true;
   }
-  
+
 }

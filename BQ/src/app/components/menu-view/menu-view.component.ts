@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/components/models/order';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
 
@@ -10,6 +11,7 @@ import { menuService } from '../../services/menu-view.service';
   styleUrls: ['./menu-view.component.css']
 })
 export class MenuViewComponent implements OnInit {
+  
 
   get orders(): Order[] {
     return this.menuViewService.items}
@@ -18,7 +20,7 @@ export class MenuViewComponent implements OnInit {
     return this.menuViewService.Total;
   }
   constructor(private menuViewService: menuService,
-    private authservice: AuthService) { }
+    private authservice: AuthService, private snackservice: NotifierService) { }
 
   ngOnInit(): void {
     // ejemplo de productos
@@ -51,6 +53,7 @@ export class MenuViewComponent implements OnInit {
   }
 
   logOut(){
+    
     console.log('you are out');
     this.authservice.logout()
   }
@@ -59,6 +62,7 @@ export class MenuViewComponent implements OnInit {
   }
 
   getuser(){
+    this.snackservice.showNotification('error', 'OK');
     this.menuViewService.getUser().subscribe(
       res => {
         console.log(res);

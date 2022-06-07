@@ -16,8 +16,6 @@ import { ViewAdminComponent } from './components/view-admin/view-admin.component
 import { Page404Component } from './components/page404/page404.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

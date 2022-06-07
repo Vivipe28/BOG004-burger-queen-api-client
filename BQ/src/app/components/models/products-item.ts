@@ -1,6 +1,9 @@
-export interface ProductsItem {
-    id: number,
-    qty: number,
-    name: string,
-    price: number,
+export interface IProductsItem {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    type: string;
+    dateEntry: string;
 }
+

@@ -44,6 +44,45 @@ body {
     color: #FFF7D2;
 }
 
+.img-container{
+    width: 50%;
+}
+
+.products-img {
+    width: 10%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+table {
+    margin-top: 5%;
+    margin-left: 10%;
+    
+    width: 50%;
+    table-layout: auto;
+    align-self: center;
+}
+
+th,
+td {
+    table-layout: auto;
+    vertical-align: top;
+    border: 1px solid #8D0000;
+    background-color: white;
+    padding: 0.3em;
+    caption-side: bottom;
+}
+
+caption {
+    padding: 0.3em;
+    color: #fff;
+}
+
+th {
+    background-color: #8D0000;
+    color: white;
+}
+
 .menuList{
     padding: 3rem;
     text-align: center;

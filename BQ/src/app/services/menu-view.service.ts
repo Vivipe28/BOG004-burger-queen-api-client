@@ -44,6 +44,6 @@ export class menuService {
     constructor(private http: HttpClient, private router: Router) { }
 
     getUser(){
-    return this.http.get(this.url + '/users')
+    return this.http.get(this.url + '/products')
     }
 }

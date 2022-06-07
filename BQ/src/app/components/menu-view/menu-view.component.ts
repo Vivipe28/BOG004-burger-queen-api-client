@@ -62,7 +62,6 @@ export class MenuViewComponent implements OnInit {
   }
 
   getuser(){
-    this.snackservice.showNotification('error', 'OK');
     this.menuViewService.getUser().subscribe(
       res => {
         console.log(res);

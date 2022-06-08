@@ -80,10 +80,10 @@ export class MenuViewComponent implements OnInit {
   getmenubreakfast(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        this.products = res
         res.filter((item: any)=>{
           if(item.type === 'Desayuno'){
-            console.log(item)
+            const items = this.products.push(item)
+            return items
           }
         })
       },
@@ -96,10 +96,10 @@ export class MenuViewComponent implements OnInit {
   getmenulunch(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        this.products = res
         res.filter((item: any)=>{
           if(item.type === 'Almuerzo'){
-            console.log(item)
+            const items = this.products.push(item)
+            return items
           }
         })
       },

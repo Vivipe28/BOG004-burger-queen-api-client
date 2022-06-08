@@ -81,11 +81,9 @@ export class MenuViewComponent implements OnInit {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
         this.products = res
-        res.filter((item: any)=>{
-          if(item.type === 'Desayuno'){
-            console.log(item)
-          }
-        })
+        const filtro = res.filter((item: any)=> item.type === 'Desayuno')
+        this.products = filtro
+        return filtro;
       },
       err=>{
         console.log(err);
@@ -97,11 +95,9 @@ export class MenuViewComponent implements OnInit {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
         this.products = res
-        res.filter((item: any)=>{
-          if(item.type === 'Almuerzo'){
-            console.log(item)
-          }
-        })
+        const filtro = res.filter((item: any)=> item.type === 'Almuerzo')
+        this.products = filtro
+        return filtro;
       },
       err => {
         console.log(err);

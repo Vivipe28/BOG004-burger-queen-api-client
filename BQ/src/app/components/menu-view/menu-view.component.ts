@@ -46,14 +46,48 @@ export class MenuViewComponent implements OnInit {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
         this.products = res
-        this.products.type =res
-        console.log(this.products.type)
+        res.filter((item: any)=>{
+          if(item.type === 'Desayuno'){
+            console.log(item)
+          }
+        })
       },
       err=>{
         console.log(err);
       }
     )
-    
+  }
+
+  getmenubreakfast(){
+    this.menuViewService.getMenu().subscribe(
+      (res: any) => {
+        this.products = res
+        res.filter((item: any)=>{
+          if(item.type === 'Desayuno'){
+            console.log(item)
+          }
+        })
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+  getmenulunch(){
+    this.menuViewService.getMenu().subscribe(
+      (res: any) => {
+        this.products = res
+        res.filter((item: any)=>{
+          if(item.type === 'Almuerzo'){
+            console.log(item)
+          }
+        })
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 
 }

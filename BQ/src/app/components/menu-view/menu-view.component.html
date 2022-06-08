@@ -8,27 +8,28 @@
     </div>
 
     <div class="menuButtons">
-        <button class="breakfast" (click)="getuser()">DESAYUNO</button>
+        <button class="breakfast" (click)="getmenu()">DESAYUNO</button>
         <button class="lunch">ALMUERZO</button>
     </div>
 
-    <table>
-        <tr>
-            <th>Cantidad</th>
-            <!-- <th class="img-container">Imágen</th> -->
-            <th>Producto</th>
-            <th>Precio</th>
-        </tr>
-        <tr *ngFor="let item of products">
-            <!-- <td> <button (click)="decreaseCounter()">-</button> qhubo <button (click)="increaseCounter()">+</button> </td> -->
-            <!-- {{item.qty}} -->
-            <td><button>-</button>  <button>+</button></td>
-            <!-- <td class="img-container"></td> -->
-            <td><img [src]="item.image" alt="" class="products-img"> {{item.name}}</td>
-            <td>{{item.price | currency}}</td>
-        </tr>
-    </table>
-    <table class="menuTable"></table>
+    <div class="container-grid">
+        <div *ngFor="let item of products">
+            <div class="products">
+                <div class="image"><img [src]="item.image" alt="" class="products-img"></div> 
+                <div class="info">
+                    <div>{{item.name}}</div>
+                    <input type="text" #price value={{item.price}} class="price">
+                    <div>
+                    <button class="btn-counter" (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text" class="counter" #counterValue value="0"> 
+                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result)">+</button>
+                </div> 
+                <div class="plus"> 
+                <p>Total: </p><input type="text" class="Result" #result value="0">
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="menuList">
     <h2 class="menuTitle">MENU</h2>

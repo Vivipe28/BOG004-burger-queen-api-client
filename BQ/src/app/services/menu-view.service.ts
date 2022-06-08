@@ -45,7 +45,7 @@ export class menuService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    getUser(): Observable<IProductsItem>{
+    getMenu(): Observable<IProductsItem>{
         const path = this.url + '/products'
     return this.http.get<IProductsItem>(path)
     }

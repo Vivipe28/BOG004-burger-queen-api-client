@@ -19,7 +19,6 @@ export class SecureInnerPagesGuard implements CanActivate {
       alert('No permission to access')
       this.router.navigate(['/error'])
     }
-
     return true;
   }
 

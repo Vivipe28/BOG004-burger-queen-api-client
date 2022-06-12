@@ -4,7 +4,7 @@ body{
     background-color: #FFD118;
     display: flex;        
     justify-content: center;
-    background-image: url('../../../assets/blackBurger.jpg');
+    background-image: url('../../../assets/burguer.jpg');
     
     background-repeat: no-repeat;
     background-attachment: fixed;

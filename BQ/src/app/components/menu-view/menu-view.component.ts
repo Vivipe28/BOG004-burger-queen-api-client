@@ -43,13 +43,13 @@ export class MenuViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.menuViewService.getMenu().subscribe(
-    //   (res: any) => {
-    //     this.products = res
-    //   },
-    //   err =>{
-    //     console.log(err);
-    //   })
+    this.menuViewService.getMenu().subscribe(
+      (res: any) => {
+        this.products = res
+      },
+      err =>{
+        console.log(err);
+      })
   }
 
   logOut() {

@@ -7,7 +7,11 @@ import { Order } from '../components/models/order';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+
+  title = 'Producto';
+
   @Input()
+
   order!: Order;
 
   @Output() orderDelete = new EventEmitter<void>();
@@ -19,6 +23,7 @@ export class OrderComponent implements OnInit {
 
   onDeleteOrder(): void{
     this.orderDelete.emit();
+    alert('Estas seguro de eliminar la orden?')
   }
 
 }

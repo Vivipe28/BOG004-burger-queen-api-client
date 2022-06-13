@@ -23,19 +23,12 @@ export class AuthService {
                     return this.errorHandler(error);
                 }
                 ))
-            .subscribe((resp: any) => {
-                sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
-                localStorage.setItem('user', JSON.stringify(resp.user.roles));
-                if (resp.user.roles.waiter) {
-                    this.router.navigate(['/menu']);
-                } else if (resp.user.roles.chef) {
-                    this.router.navigate(['/chef']);
-                } else if (resp.user.roles.admin) {
-                    this.router.navigate(['/admin']);
-                }
-            })
+            
     }
-
+    
+    get(url:any){
+        return this.http.get(url)
+    }
     getUser() {
         return localStorage.getItem('user')
     }

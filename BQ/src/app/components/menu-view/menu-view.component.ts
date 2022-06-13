@@ -61,31 +61,13 @@ export class MenuViewComponent implements OnInit {
     this.menuViewService.deleteOrder(productToDelete)
   }
 
-  getmenu() {
-    this.menuViewService.getMenu().subscribe(
-      (res: any) => {
-        this.products = res
-        res.filter((item: any)=>{
-          if(item.type === 'Desayuno'){
-            console.log(item)
-          }
-        })
-      },
-      err=>{
-        console.log(err);
-      }
-    )
-  }
-
   getmenubreakfast(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        res.filter((item: any)=>{
-          if(item.type === 'Desayuno'){
-            const items = this.products.push(item)
-            return items
-          }
-        })
+        this.products = res
+        const filtro = res.filter((item: any)=> item.type === 'Desayuno')
+        this.products = filtro
+        return filtro;
       },
       err=>{
         console.log(err);
@@ -96,16 +78,11 @@ export class MenuViewComponent implements OnInit {
   getmenulunch(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        res.filter((item: any)=>{
-          if(item.type === 'Almuerzo'){
-            const items = this.products.push(item)
-            return items
-          }
-        })
-      },
-      err => {
-        console.log(err);
-      }
+        this.products = res
+        const filtro = res.filter((item: any)=> item.type === 'Almuerzo')
+        this.products = filtro
+        return filtro;
+        }
     )
   }
 }

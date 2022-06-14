@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { ViewLoginComponent } from './view-login.component';
 import { AuthService } from '../../services/http.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -10,8 +10,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 describe('ViewLoginComponent', () => {
   let component: ViewLoginComponent;
   let fixture: ComponentFixture<ViewLoginComponent>;
-  let service: AuthService
-  let httpClientSpy: {post: jasmine.Spy};
+  // let service: AuthService
+  // let httpClientSpy: {post: jasmine.Spy};
   
   beforeEach(async () => {
     await TestBed.configureTestingModule({

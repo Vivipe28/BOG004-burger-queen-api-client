@@ -21,12 +21,14 @@
                     <input type="text" #price value={{item.price}} class="price">
                     <div>
                     <button class="btn-counter" (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text" class="counter" #counterValue value="0"> 
-                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result)">+</button>
+                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result,item.id)">+</button>
                 </div> 
                 <div class="plus"> 
                 <p>Total: </p><input type="text" class="Result" #result value="0">
             </div>
+            <button class="addButton" (click)="addItem(item)">Agregar</button>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -34,13 +36,14 @@
     <div class="menuList">
     <h2 class="menuTitle">MENU</h2>
 
+
     <app-order 
-    *ngFor="let product of orders" 
+    *ngFor="let product of orderArray" 
     [order]="product"
-    (orderDelete)="deleteOrder(product)"></app-order>
+    ></app-order>
    
 
-    <p class="total"><span class="total-label">Total:</span> $ {{Total}}</p>
+    <p class="total"><span class="total-label">Total:</span> </p>
 
     <button class="sendOrder" (click)="logOut()">Finalizar pedido</button>
 </div>

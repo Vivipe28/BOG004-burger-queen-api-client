@@ -8,17 +8,14 @@ import { Order } from '../components/models/order';
 })
 export class OrderComponent implements OnInit {
 
-  title = 'Producto';
-
-  @Input()
-
-  order!: Order;
+  @Input() order!: Order;
 
   @Output() orderDelete = new EventEmitter<void>();
  
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.order)
   }
 
   onDeleteOrder(): void{

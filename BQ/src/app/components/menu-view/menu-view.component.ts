@@ -13,17 +13,21 @@ export class MenuViewComponent implements OnInit {
 
   public products: any = [];
 
-  get orders(): Order[] {
-    return this.menuViewService.items
-  }
+  public orderArray: any = [];
 
-  get Total(): number {
-    return this.menuViewService.Total;
-  }
+  // get orders(): Order[] {
+  //   return this.menuViewService.items
+  // }
 
-  increaseCounter(counter: any, price: any, result: any): void {
+  // get Total(): number {
+  //   return this.menuViewService.Total;
+  // }
+
+  increaseCounter(counter: any, price: any, result: any, id:any): void {
     counter.value++;
     this.total(counter, price, result)
+    console.log(id);
+    
   }
 
   decreaseCounter(counter: any, price: any, result: any): void {
@@ -36,7 +40,6 @@ export class MenuViewComponent implements OnInit {
     result.value = counter.value * price.value;
 
   }
-
 
   constructor(private menuViewService: menuService,
     private authservice: AuthService, private snackservice: NotifierService,) { }
@@ -52,37 +55,62 @@ export class MenuViewComponent implements OnInit {
     //   })
   }
 
+
   logOut() {
 
     console.log('you are out');
     this.authservice.logout()
   }
-  deleteOrder(productToDelete: Order): void {
-    this.menuViewService.deleteOrder(productToDelete)
-  }
+  // deleteOrder(productToDelete: Order): void {
+  //   this.menuViewService.deleteOrder(productToDelete)
+  // }
 
   getmenubreakfast(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        this.products = res
-        const filtro = res.filter((item: any)=> item.type === 'Desayuno')
+    const filtro = res.filter((item: any)=> {
+          if(item.type === 'Desayuno'){
+            return {
+              qty:1,
+              product:item
+            }
+          }
+          return
+        })
         this.products = filtro
         return filtro;
+
       },
       err=>{
         console.log(err);
       }
     )
+    console.log('Products',this.products);
+    
   }
-
+orden = {
+  qty:1
+}
   getmenulunch(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        this.products = res
-        const filtro = res.filter((item: any)=> item.type === 'Almuerzo')
+        const filtro = res.filter((item: any)=> {
+          if(item.type === 'Almuerzo'){
+            return {
+              qty:1,
+              product:item
+            }
+          }
+          return
+        })
         this.products = filtro
         return filtro;
         }
     )
+  }
+
+  addItem(item:any){
+    this.orderArray.push(item)
+    console.log(this.orderArray);
   }
 }

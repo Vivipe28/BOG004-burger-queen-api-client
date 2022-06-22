@@ -10,7 +10,7 @@ describe('SecureInnerPagesGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, MatSnackBarModule]
+      imports: [HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
     });
     guard = TestBed.inject(SecureInnerPagesGuard);
   });

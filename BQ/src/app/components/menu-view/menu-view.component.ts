@@ -3,6 +3,7 @@ import { Order } from 'src/app/components/models/order';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
+import { Products } from '../models/Products';
 
 @Component({
   selector: 'menu-view',
@@ -109,8 +110,8 @@ orden = {
     )
   }
 
-  addItem(item:any){
-    this.orderArray.push(item)
+  addItem(item:any, counter:any){
+    this.orderArray.push(new Products(counter.value, item))
     console.log(this.orderArray);
   }
 }

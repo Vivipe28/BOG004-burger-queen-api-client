@@ -26,7 +26,7 @@
                 <div class="plus"> 
                 <p>Total: </p><input type="text" class="Result" #result value="0">
             </div>
-            <button class="addButton" (click)="addItem(item)">Agregar</button>
+            <button class="addButton" (click)="addItem(item, counterValue)">Agregar</button>
                 </div>
                 
             </div>
@@ -39,7 +39,7 @@
 
     <app-order 
     *ngFor="let product of orderArray" 
-    [order]="product"
+    [products]="product"
     ></app-order>
    
 

@@ -1,6 +1,7 @@
 
 <img src="{{products.product?.image}}" alt="coffee_cup" class="coffee_cup">
-<span>{{products?.qty}} </span>
+<span #qty>{{products?.qty}} </span>
 <span>{{products.product?.name}}</span>
-<span class="infoPrice"> $ {{products.product?.price}}</span>
+<span #price class="infoPrice"> $ {{products.product?.price}}</span>
+<span class="Total">{{total()}}</span>
 <button class ='delete' (click)="onDeleteOrder()">Eliminar</button>

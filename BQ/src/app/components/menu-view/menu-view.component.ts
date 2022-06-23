@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/components/models/order';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
 import { Products } from '../models/Products';
+import { Client } from '../models/LoginObject';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'menu-view',
@@ -12,34 +14,27 @@ import { Products } from '../models/Products';
 })
 export class MenuViewComponent implements OnInit {
 
+  nameClientForm!: FormGroup;
+  client: Client = {
+    client: '',
+  };
+
   public products: any = [];
 
   public orderArray: any = [];
 
-  // get orders(): Order[] {
-  //   return this.menuViewService.items
-  // }
-
-  // get Total(): number {
-  //   return this.menuViewService.Total;
-  // }
-
-  increaseCounter(counter: any, price: any, result: any, id:any): void {
+  increaseCounter(counter: any): void {
     counter.value++;
-    this.total(counter, price, result)
-    console.log(id);
     
   }
 
-  decreaseCounter(counter: any, price: any, result: any): void {
+  decreaseCounter(counter: any): void {
     if (counter.value > 0)
       counter.value--
-    this.total(counter, price, result)
   }
 
-  total(counter: any, price: any, result: any) {
-    result.value = counter.value * price.value;
-
+  get nameControl(): FormControl {
+    return this.nameClientForm.get('email') as FormControl
   }
 
   constructor(private menuViewService: menuService,
@@ -54,17 +49,18 @@ export class MenuViewComponent implements OnInit {
     //   err =>{
     //     console.log(err);
     //   })
+
+    this.nameClientForm = new FormGroup({
+      client: new FormControl(''),
+    })
   }
 
-
+  
   logOut() {
 
     console.log('you are out');
     this.authservice.logout()
   }
-  // deleteOrder(productToDelete: Order): void {
-  //   this.menuViewService.deleteOrder(productToDelete)
-  // }
 
   getmenubreakfast(){
     this.menuViewService.getMenu().subscribe(
@@ -86,12 +82,8 @@ export class MenuViewComponent implements OnInit {
         console.log(err);
       }
     )
-    console.log('Products',this.products);
-    
   }
-orden = {
-  qty:1
-}
+
   getmenulunch(){
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
@@ -111,7 +103,13 @@ orden = {
   }
 
   addItem(item:any, counter:any){
-    this.orderArray.push(new Products(counter.value, item))
+    this.orderArray.push(new Products(counter.value, item),)
     console.log(this.orderArray);
+  }
+
+  sendOrder(){
+    
+    console.log(new Order(this.nameClientForm.value, this.orderArray));
+    
   }
 }

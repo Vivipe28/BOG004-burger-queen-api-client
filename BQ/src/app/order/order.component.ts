@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Order } from '../components/models/order';
 import { Products } from '../components/models/Products';
 
 @Component({
@@ -12,11 +11,15 @@ export class OrderComponent implements OnInit {
   @Input() products!: Products;
 
   @Output() orderDelete = new EventEmitter<void>();
- 
-  constructor() { }
+  
+  constructor(){ 
+  }
+
+  total(){
+    return this.products.qty * this.products.product?.price
+  }
 
   ngOnInit(): void {
-    console.log(this.products)
   }
 
   onDeleteOrder(): void{

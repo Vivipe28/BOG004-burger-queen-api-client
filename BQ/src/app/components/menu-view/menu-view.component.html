@@ -3,7 +3,9 @@
         <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
         <div class="infoClient">
             <h3>Nombre del cliente</h3>
-            <input type="text" name="clientName" class="clientName">
+            <form [formGroup]= "nameClientForm">
+                <input type="text" name="clientName" class="clientName" formControlName="client">
+            </form>
         </div>
     </div>
 
@@ -20,13 +22,13 @@
                     <div>{{item.name}}</div>
                     <input type="text" #price value={{item.price}} class="price">
                     <div>
-                    <button class="btn-counter" (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text" class="counter" #counterValue value="0"> 
-                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result,item.id)">+</button>
+                    <button class="btn-counter" (click)="decreaseCounter(counterValue)">-</button><input type="text" class="counter" #counterValue value="0"> 
+                    <button class="btn-counter" (click)="increaseCounter(counterValue)">+</button>
                 </div> 
                 <div class="plus"> 
-                <p>Total: </p><input type="text" class="Result" #result value="0">
+                <!-- <p>Total: </p><input type="text" class="Result" #result value="0"> -->
             </div>
-            <button class="addButton" (click)="addItem(item, counterValue)">Agregar</button>
+            <button class="addButton" (click)="addItem(item, counterValue)" >Agregar</button>
                 </div>
                 
             </div>
@@ -45,7 +47,8 @@
 
     <p class="total"><span class="total-label">Total:</span> </p>
 
-    <button class="sendOrder" (click)="logOut()">Finalizar pedido</button>
+    <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
+    <button class="sendOrder" (click)="logOut()">Salir</button>
 </div>
 
 </body>

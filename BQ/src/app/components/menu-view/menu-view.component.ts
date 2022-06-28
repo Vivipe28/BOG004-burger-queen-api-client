@@ -5,6 +5,7 @@ import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
 import { Client } from '../models/LoginObject';
+import { Products } from '../models/Products';
 
 @Component({
   selector: 'menu-view',
@@ -18,11 +19,10 @@ export class MenuViewComponent implements OnInit {
     client: '',
   };
   products: any = [];
-  cartProductList: any = [];
-
+  public orderArray: any = [];
 
   get nameControl(): FormControl {
-    return this.nameClientForm.get('email') as FormControl
+    return this.nameClientForm.get('client') as FormControl
   }
 
   constructor(private menuViewService: menuService,
@@ -45,46 +45,18 @@ export class MenuViewComponent implements OnInit {
 
   pushClient(){
     this.client = {
-      client: this.nameClientForm.value['email'],
+      client: this.nameClientForm.value['client'],
     }
-    this.cartProductList.push(this.nameClientForm.value)
-    console.log(this.cartProductList)
-  }
-  
-
-  get orders(): Order[] {
-    return this.menuViewService.items
-  }
-
-  get Total(): number {
-    return this.menuViewService.Total;
   }
 
   increaseCounter(counter: any, price: any, result: any): void {
     counter.value++;
     this.total(counter, price, result)
-    // this.addProductToCart();
   }
 
   decreaseCounter(counter: any, price: any, result: any): void {
-    if (counter.value > 0)
       counter.value--
     this.total(counter, price, result)
-  }
-
-// intento
-  addProductToCart(product: { name: any; }) {
-  console.log(this.cartProductList.push({product : product}));
-  console.log(this.cartProductList)
-  }
-
-  // removeProduct(product: { name: any; }) {
-  //   this.cartProductList = this.cartProductList.filter(( name: any ) => name !== product.name)
-  // }
-
-// intento
-  deleteOrder(productToDelete: Order): void {
-    this.menuViewService.deleteOrder(productToDelete)
   }
 
   getmenubreakfast() {
@@ -94,11 +66,13 @@ export class MenuViewComponent implements OnInit {
         const filtro = res.filter((item: any) => item.type === 'Desayuno')
         this.products = filtro
         return filtro;
+
       },
       err => {
         console.log(err);
       }
     )
+    // console.log('Products',this.products);
   }
 
   getmenulunch() {
@@ -111,13 +85,41 @@ export class MenuViewComponent implements OnInit {
       }
     )
   }
+  
+  addItem(item:any, counter:any, total:any){
+    this.orderArray.push(new Products(counter.value, item, total.value))
+  }
+
+  deleteItem(itemToDelete: any): void{
+    if (confirm('Estas seguro de eliminar este producto?')){
+      this.orderArray = this.orderArray.filter((item:any) => item !== itemToDelete)
+    }
+  }
+
+  get totaPur(): number {
+    console.log(this.orderArray)
+    return this.orderArray.reduce((acc:any, total:any) => console.log(acc+=total.total), 0)
+    //this.orderArray.reduce((acc:any , 
+    // .reduce((acc:any, prod:any) => acc+= prod.num ,0);
+  }
 
   total(counter: any, price: any, result: any) {
     result.value = counter.value * price.value;
+  }
+  
+
+
+  calcTotal() {
+    return this.orderArray
+    // return this.orderArray.total.reduce((acc:any, prod:any) => console.log(acc+= prod.num ,0))
   }
 
   logOut() {
     console.log('you are out');
     this.authservice.logout()
+  }
+
+  sendOrder(){
+    console.log(new Order(this.nameClientForm.value, this.orderArray));
   }
 }

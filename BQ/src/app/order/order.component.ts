@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Order } from '../components/models/order';
+import { Products } from '../components/models/Products';
 
 @Component({
   selector: 'app-order',
@@ -8,23 +9,17 @@ import { Order } from '../components/models/order';
 })
 export class OrderComponent implements OnInit {
 
-  title = 'Producto';
-
-  @Input()
-
-  order!: Order;
-
-  // @Output() orderDelete = new EventEmitter<void>();
+  
+  @Input() products!: Products;
   @Output() orderDelete = new EventEmitter<void>();
  
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products)
   }
 
   onDeleteOrder(): void{
     this.orderDelete.emit();
-    alert('Estas seguro de eliminar la orden?')
   }
-
 }

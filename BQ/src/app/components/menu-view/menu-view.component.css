@@ -40,7 +40,7 @@ body {
 }
 
 .breakfast,
-.lunch, .sendOrder {
+.lunch, .sendOrder, .logOut {
     padding: 1rem;
     background-color: #FFC700;
     border-style: none;
@@ -48,8 +48,12 @@ body {
     border-radius: 5px;
 }
 
+.logOut{
+    width: 20%;
+}
+
 .breakfast:hover,
-.lunch:hover, .sendOrder:hover {
+.lunch:hover, .sendOrder:hover, .logOut:hover {
     background-color: #8D0000;
     color: #FFF7D2;
 }

@@ -1,6 +1,7 @@
 <body>
     <div class="header">
         <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
+        <button (click)="logOut()" class="logOut">Cerrar sesión</button>
         <div class="infoClient">
             <h3>Nombre del cliente</h3>
             <form [formGroup]= "nameClientForm">
@@ -14,8 +15,6 @@
         <button class="lunch" (click)="getmenulunch()">ALMUERZO</button>
     </div>
 
-
-
     <div class="container-grid">
         <div *ngFor="let item of products">
             <div class="products">
@@ -24,16 +23,15 @@
                     <div>{{item.name}}</div>
                     <input type="text" #price value={{item.price}} class="price">
                     <div>
-                        <button class="btn-counter"
-                            (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text"
-                            class="counter" #counterValue value="0">
-                        <button class="btn-counter" (click)="increaseCounter(counterValue, price, result)">+</button>
-                    </div>
-                    <div class="plus">
-                        <p>Total: </p><input type="text" class="Result" #result value="0">
-                    </div>
-                    <button class="addCart" [ngStyle]="{'width':'50px'}" [ngStyle]="{'height':'20px'}" (click)="addProductToCart(item)" (click)="pushClient()">Agrergar al resumen</button>
+                    <button class="btn-counter" (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text" class="counter" #counterValue value="0"> 
+                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result)">+</button>
+                </div> 
+                <div class="plus"> 
+                <p>Total: </p><input type="text" class="Result" #result value="0">
+            </div>
+            <button class="addButton" (click)="addItem(item, counterValue, result)" (click)="pushClient()">Agregar</button>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -41,11 +39,16 @@
     <div class="menuList">
         <h2 class="menuTitle">MENU</h2>
 
-        <app-order *ngFor="let product of cartProductList" [order]= "product" (orderDelete)="deleteOrder(product)"></app-order>
 
-        <p class="total"><span class="total-label">Total:</span> $ {{Total}}</p>
+    <app-order 
+    *ngFor="let product of orderArray" 
+    [products]="product"
+    (orderDelete)="deleteItem(product)"
+    ></app-order>
 
-        <button class="sendOrder" (click)="logOut()">Finalizar pedido</button>
+    <p class="total"><span class="total-label">Total: {{ totaPur }}</span> </p>
+
+        <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
     </div>
 
 </body>

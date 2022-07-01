@@ -3,5 +3,5 @@
 <span #qty>{{products?.qty}} </span>
 <span>{{products.product?.name}}</span>
 <span #price class="infoPrice"> $ {{products.product?.price}}</span>
-<span class="Total">{{total()}}</span>
+<span class="Total">{{products?.total}}</span>
 <button class ='delete' (click)="onDeleteOrder()">Eliminar</button>

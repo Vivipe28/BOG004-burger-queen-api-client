@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Products } from '../components/models/Products';
+import { Products } from '../models/Products';
 
 @Component({
   selector: 'app-order',
@@ -8,23 +8,17 @@ import { Products } from '../components/models/Products';
 })
 export class OrderComponent implements OnInit {
 
-  @Input() products!: Products;
-
-  @Output() orderDelete = new EventEmitter<void>();
   
-  constructor(){ 
-  }
-
-  total(){
-    return this.products.qty * this.products.product?.price
-  }
+  @Input() products!: Products;
+  @Output() orderDelete = new EventEmitter<void>();
+ 
+  constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products)
   }
 
   onDeleteOrder(): void{
     this.orderDelete.emit();
-    alert('Estas seguro de eliminar la orden?')
   }
-
 }

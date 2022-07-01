@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
 import { Products } from '../models/Products';
-import { Client } from '../models/LoginObject';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Order } from '../models/order';
+import { status } from '../models/status';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'menu-view',
@@ -14,18 +14,23 @@ import { Order } from '../models/order';
 })
 export class MenuViewComponent implements OnInit {
 
-  nameClientForm!: FormGroup;
-  client: Client = {
-    client: '',
-  };
+  Client: string = '';
+
+  Total: number = 0;
 
   public products: any = [];
 
   public orderArray: any = [];
 
+  producto!: Products;
+
+  date = new Date;
+
+  today = this.date.toLocaleString();
+  
+
   increaseCounter(counter: any): void {
     counter.value++;
-    
   }
 
   decreaseCounter(counter: any): void {
@@ -33,15 +38,9 @@ export class MenuViewComponent implements OnInit {
       counter.value--
   }
 
-  get nameControl(): FormControl {
-    return this.nameClientForm.get('email') as FormControl
-  }
-
-  constructor(private menuViewService: menuService,
-    private authservice: AuthService, private snackservice: NotifierService,) { }
+  constructor(private menuViewService: menuService,private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
     // this.menuViewService.getMenu().subscribe(
     //   (res: any) => {
     //     this.products = res
@@ -49,67 +48,81 @@ export class MenuViewComponent implements OnInit {
     //   err =>{
     //     console.log(err);
     //   })
-
-    this.nameClientForm = new FormGroup({
-      client: new FormControl(''),
-    })
   }
 
-  
   logOut() {
-
     console.log('you are out');
     this.authservice.logout()
   }
 
-  getmenubreakfast(){
+  getmenubreakfast() {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-    const filtro = res.filter((item: any)=> {
-          if(item.type === 'Desayuno'){
+        const filtro = res.filter((item: any) => {
+          if (item.type === 'Desayuno') {
             return {
-              qty:1,
-              product:item
+              qty: 1,
+              product: item
             }
           }
           return
         })
         this.products = filtro
         return filtro;
-
       },
-      err=>{
+      err => {
         console.log(err);
       }
     )
   }
 
-  getmenulunch(){
+  getmenulunch() {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        const filtro = res.filter((item: any)=> {
-          if(item.type === 'Almuerzo'){
+        const filtro = res.filter((item: any) => {
+          if (item.type === 'Almuerzo') {
             return {
-              qty:1,
-              product:item
+              qty: 1,
+              product: item
             }
           }
           return
         })
         this.products = filtro
         return filtro;
-        }
+      }
     )
   }
 
-  addItem(item:any, counter:any){
+  addItem(item: any, counter: any) {
     this.orderArray.push(new Products(counter.value, item),)
-    console.log(this.orderArray);
+    this.SetTotalOrder()
   }
 
-  sendOrder(){
-    
-    console.log(new Order(this.nameClientForm.value, this.orderArray));
-    
+  SetTotalOrder() {
+    this.Total = 0;
+    if (this.orderArray.length > 0) {
+      this.orderArray.forEach((item: { total: number; }) => {
+        this.Total = this.Total + item.total;
+      });
+    }
   }
+  deleteItem(itemToDelete: any): void{
+    if (confirm('Estas seguro de eliminar este producto?')){
+      this.orderArray = this.orderArray.filter((item:any) => item !== itemToDelete)
+    };
+    this.SetTotalOrder()
+  }
+
+  sendOrder() {
+    this.Client = (document.querySelector('.clientName')as HTMLInputElement).value
+    this.menuViewService.postOrder(new Order(this.authservice.getId(),this.Client, this.orderArray,status[0],this.today))
+    .subscribe((resp) => {
+      console.log(resp);
+      this.router.navigate(['/chef']);
+    })
+  }
+
+  
+  
 }

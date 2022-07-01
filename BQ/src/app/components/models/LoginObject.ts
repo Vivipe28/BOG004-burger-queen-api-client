@@ -3,6 +3,4 @@ export class LoginObject {
     password!: string;
 }
 
-export interface Client {
-    client: string;
-}
+

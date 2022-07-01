@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component: ViewLoginComponent},
   {path:'menu', component: MenuViewComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"waiter":true}}},
-  {path:'chef', component: ViewChefComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"chef":true}}},
+  {path:'chef', component: ViewChefComponent, canActivate:[AuthGuard],},
   {path:'admin', component: ViewAdminComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:{"admin":true}}},
   {path:'error', component: Page404Component}
 ];

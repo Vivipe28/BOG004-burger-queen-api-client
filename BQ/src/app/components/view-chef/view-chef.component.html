@@ -1,1 +1,9 @@
-<p>view-chef works!</p>
+<div class="orderContainer" *ngFor="let item of ordersArray">
+    <div class="order">
+    <span class="cliente"> Cliente: {{item.client}}</span>
+    <span class="qty"> {{item.products}}</span>
+    <span class="item"></span>
+    <span class="total"></span>
+    <span class="status"></span>
+</div>
+ </div>

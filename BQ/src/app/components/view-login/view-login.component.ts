@@ -45,6 +45,7 @@ export class ViewLoginComponent implements OnInit {
                 console.log(resp);
                 sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
                 localStorage.setItem('user', JSON.stringify(resp.user.roles));
+                sessionStorage.setItem('id', JSON.stringify(resp.user.id));
                 if (resp.user.roles.waiter) {
                     this.router.navigate(['/menu']);
                 } else if (resp.user.roles.chef) {

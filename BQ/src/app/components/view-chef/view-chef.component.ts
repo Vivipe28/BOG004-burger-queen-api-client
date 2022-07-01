@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { chefService } from 'src/app/services/chef.service';
 
 @Component({
   selector: 'app-view-chef',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewChefComponent implements OnInit {
 
-  constructor() { }
+  ordersArray:any = [];
+
+  constructor(private chefService: chefService) { }
+
 
   ngOnInit(): void {
-  }
-
+    
+      this.chefService.getOrders().subscribe((resp)=> {
+        this.ordersArray = resp
+        this.ordersArray.forEach((order:any)=>{
+          console.log(order.products);
+          
+        })
+      })
+    }
+  
 }

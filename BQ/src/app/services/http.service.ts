@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from "rxjs";
 import { NotifierService } from "./notifier.service";
 
-
-
 @Injectable({
     providedIn: 'root'
 })
@@ -23,14 +21,18 @@ export class AuthService {
                     return this.errorHandler(error);
                 }
                 ))
-            
+
     }
-    
-    get(url:any){
+
+    get(url: any) {
         return this.http.get(url)
     }
     getUser() {
         return localStorage.getItem('user')
+    }
+
+    getId() {
+        return sessionStorage.getItem('id')
     }
 
     getToken() {
@@ -54,7 +56,7 @@ export class AuthService {
             }
             else {
                 if (error.status === 400) {
-                    this.snackservice.showNotification('your email or password do not match','OK');
+                    this.snackservice.showNotification('your email or password do not match', 'OK');
                 }
             }
         }

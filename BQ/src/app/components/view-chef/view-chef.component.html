@@ -1,9 +1,14 @@
-<div class="orderContainer" *ngFor="let item of ordersArray">
+<div class="orderContainer" *ngFor="let item of responseOrdersArray">
     <div class="order">
+    <input type="number" value="{{item.id}}" #idOrder>
     <span class="cliente"> Cliente: {{item.client}}</span>
-    <span class="qty"> {{item.products}}</span>
-    <span class="item"></span>
-    <span class="total"></span>
-    <span class="status"></span>
+    <div class="infoProduct" *ngFor="let product of item.products">
+        <span class="qty">{{product.qty}}</span>
+        <span class="nameProduct">{{product.product.name}}</span>
+    </div>
+    <span class="date">{{item.dateEntry}}</span>
+    <input type="text" #status value="{{item.status}}" >
+    <input type="text" class="dateExit" #doneDate>
+    <button class="statusButton" (click)="changeStatus(doneDate, idOrder.value, status)">Ok</button>
+    <button class="delete">Eliminar</button>
 </div>
- </div>

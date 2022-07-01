@@ -18,4 +18,9 @@ export class chefService {
         return this.http.get<Order>(path)
     }
 
+    patchStatus(status:any, id:any){
+        const path = this.url + '/orders/'+ id;
+        return this.http.patch(path, status)
+    }
+
 }

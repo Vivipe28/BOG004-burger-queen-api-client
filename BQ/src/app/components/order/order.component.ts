@@ -15,7 +15,7 @@ export class OrderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.products)
+    
   }
 
   onDeleteOrder(): void{

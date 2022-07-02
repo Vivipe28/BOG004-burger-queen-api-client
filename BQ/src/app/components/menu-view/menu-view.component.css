@@ -1,17 +1,16 @@
 body {
-    background-color: #FFF7D2;
+    background-image: url('../../../assets/background.png');
+    background-attachment: fixed;
+    background-position: center;
     margin: 0;
-    padding: 0;
+    padding: 2rem;
 }
 
-:host{
-    display: flex;
-    /* align-items: center; */
-    margin: 2rem;
-    background-color: white;
-    border-radius: 3px;
-    padding: 1rem;
-    box-shadow: 2px 2px 4px rgb(196, 196, 190);
+.menuContainer{
+    background-color: #f4ede7db;
+    box-shadow: rgb(137, 129, 129) 3px 3px  5px;
+    border: 1px solid rgb(137, 129, 129) ;
+    backdrop-filter: blur(5px);
 }
 
 .header {
@@ -25,13 +24,15 @@ body {
     width: 100%;
     margin-top: 1rem;
     border-style: none;
-    background-color: #FFC700;
+    background-color: transparent;
+    border-bottom: 2px solid #FFC700;
     height: 2rem;
     padding: 2%;
 }
 
 .logo {
     width: 80%;
+    border: #8D0000;
 }
 
 .menuButtons {

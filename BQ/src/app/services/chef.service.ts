@@ -23,4 +23,9 @@ export class chefService {
         return this.http.patch(path, status)
     }
 
+    deleteOrder(id:any){
+        const path = this.url + '/orders/'+ id;
+        return this.http.delete(path)
+    }
+
 }

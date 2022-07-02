@@ -41,18 +41,13 @@ export class MenuViewComponent implements OnInit {
   constructor(private menuViewService: menuService,private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.menuViewService.getMenu().subscribe(
-    //   (res: any) => {
-    //     this.products = res
-    //   },
-    //   err =>{
-    //     console.log(err);
-    //   })
-  }
-
-  logOut() {
-    console.log('you are out');
-    this.authservice.logout()
+    this.menuViewService.getMenu().subscribe(
+      (res: any) => {
+        this.products = res
+      },
+      err =>{
+        console.log(err);
+      })
   }
 
   getmenubreakfast() {
@@ -118,7 +113,6 @@ export class MenuViewComponent implements OnInit {
     this.Client = (document.querySelector('.clientName')as HTMLInputElement).value
     this.menuViewService.postOrder(new Order(this.authservice.getId(),this.Client, this.orderArray,status[0],this.today))
     .subscribe((resp) => {
-      console.log(resp);
       this.router.navigate(['/chef']);
     })
   }

@@ -1,3 +1,5 @@
+<button class="logOut" (click)="logOut()">Salir</button>
+
 <div class="orderContainer" *ngFor="let item of responseOrdersArray">
     <div class="order">
     <input type="number" value="{{item.id}}" #idOrder>
@@ -10,5 +12,5 @@
     <input type="text" #status value="{{item.status}}" >
     <input type="text" class="dateExit" #doneDate>
     <button class="statusButton" (click)="changeStatus(doneDate, idOrder.value, status)">Ok</button>
-    <button class="delete">Eliminar</button>
+    <button class="delete" (click)="deleteOrder(idOrder.value)">Eliminar</button>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { chefService } from 'src/app/services/chef.service';
-import { Order } from '../models/order';
+import { AuthService } from 'src/app/services/http.service';
 import { status } from '../models/status';
 
 @Component({
@@ -16,13 +16,12 @@ export class ViewChefComponent implements OnInit {
 
   show = false;
 
-  constructor(private chefService: chefService) { }
+  constructor(private chefService: chefService, private authservice: AuthService) { }
 
   ngOnInit(): void {
     
       this.chefService.getOrders().subscribe((resp)=> {
         this.responseOrdersArray = resp
-        console.log(this.responseOrdersArray);
       })
     }
 
@@ -39,10 +38,20 @@ export class ViewChefComponent implements OnInit {
     this.chefService.patchStatus(statusChanged, id).subscribe((resp)=>{
       this.deliveredOrder = resp;
       statusText.value = this.deliveredOrder.status
-      console.log(this.deliveredOrder.status);
     })
   }
 
-  
+  deleteOrder(id:any){
+    this.chefService.deleteOrder(id).subscribe((resp)=>{
+      this.chefService.getOrders().subscribe((resp)=> {
+        this.responseOrdersArray = resp
+      })
+    })
+  }
+
+  logOut() {
+    console.log('you are out');
+    this.authservice.logout()
+  }
   
 }

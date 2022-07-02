@@ -42,7 +42,6 @@ export class ViewLoginComponent implements OnInit {
     }
     this.httpServices.login(this.login.email, this.login.password)
     .subscribe((resp: any) => {
-                console.log(resp);
                 sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
                 localStorage.setItem('user', JSON.stringify(resp.user.roles));
                 sessionStorage.setItem('id', JSON.stringify(resp.user.id));

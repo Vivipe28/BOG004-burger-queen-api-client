@@ -15,6 +15,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { ViewChefComponent } from './components/view-chef/view-chef.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { Page404Component } from './components/page404/page404.component';
+import { AddWorkerModalComponent } from './components/add-worker-modal/add-worker-modal.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { Page404Component } from './components/page404/page404.component';
     ViewChefComponent,
     ViewAdminComponent,
     Page404Component,
+    AddWorkerModalComponent,
   ],
   imports: [
     BrowserModule,

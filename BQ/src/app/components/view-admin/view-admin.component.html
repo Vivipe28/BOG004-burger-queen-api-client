@@ -1,1 +1,31 @@
-<p>view-admin works!</p>
+<body>
+    <div class="view-header">
+        <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
+    </div>
+    <p>LISTADO DE COLABORADORES</p>    
+    <button class="addWorker" (click)="openModal()">Agregar colaborador</button>
+    
+    <div *ngIf="modalSwitch === true">
+        <app-add-worker-modal (closeModal)="closeModal()"></app-add-worker-modal>
+    </div>
+
+    <table class="wokersList">
+        <thead class="thWorkers">
+            <tr>
+                <th class="id">No.</th>
+                <th class="email">Correo</th>
+                <th class="rol">Rol</th>
+            </tr>
+        </thead>
+        <tbody class="tbWorkers" *ngFor="let item of workers">
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td >{{item.roles}}</td>
+                <td><button class="editWorker">Editar</button></td>
+                <td><button class="deleteWorker" (click)=" deleteW()">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="logOut" (click)="logOut()">Salir</button>
+</body>

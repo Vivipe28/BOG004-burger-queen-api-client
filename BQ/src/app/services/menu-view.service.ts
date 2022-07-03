@@ -1,8 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { Order } from "src/app/components/models/order";
 import { IProductsItem } from "../components/models/products-item";
 
 @Injectable({
@@ -22,7 +20,7 @@ export class menuService {
     //     )
     // }
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient) { }
 
     getMenu(): Observable<IProductsItem> {
         const path = this.url + '/products'

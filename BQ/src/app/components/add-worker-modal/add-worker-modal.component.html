@@ -1,0 +1,29 @@
+<div class="modal">
+    <div class="modal-container">
+        <button class="closemodal" (click)="onCloseModal()">X</button>
+        <form [formGroup]= 'addWorkerForm'>
+            <ul>
+                <li>
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email" formControlName="email">
+                </li>
+                <li>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" formControlName="password">
+                </li>
+                <li>
+                    <label for="password">Rol:</label><br>
+                    <select name="rol" id="rol" formControlName="rol">
+                        <option value="">Seleccione el rol</option>
+                        <option value="admin">Administrador</option>
+                        <option value="waiter">Mesero</option>
+                        <option value="chef">Chef</option>
+                    </select>
+                </li>
+                <li class="button">
+                    <button type="submit" id="addWorker" (click)="onSubmit()">Agregar</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

@@ -24,9 +24,9 @@ describe('OrderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a title', () =>{
-    expect(component.title).toBe('Producto')
-  })
+  // it('should have a title', () =>{
+  //   expect(component.title).toBe('Producto')
+  // })
 
   it('should say Producto', () => {
     const span = fixture.debugElement.query(By.css('h4')).nativeElement;

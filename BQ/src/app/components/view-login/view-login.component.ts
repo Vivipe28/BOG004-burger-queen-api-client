@@ -45,11 +45,11 @@ export class ViewLoginComponent implements OnInit {
         console.log(resp);
         sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
         localStorage.setItem('user', JSON.stringify(resp.user.roles));
-        if (resp.user.roles.waiter) {
+        if (resp.user.roles === 'waiter') {
           this.router.navigate(['/menu']);
-        } else if (resp.user.roles.chef) {
+        } else if (resp.user.roles === 'chef') {
           this.router.navigate(['/chef']);
-        } else if (resp.user.roles.admin) {
+        } else if (resp.user.roles === 'admin') {
           this.router.navigate(['/admin']);
         }
     })

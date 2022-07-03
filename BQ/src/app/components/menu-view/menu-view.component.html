@@ -8,6 +8,8 @@
         </div>
     </div>
 
+    <h2 class="menuTitle">MENU</h2>
+
     <div class="menuButtons">
         <button class="breakfast" (click)="getmenubreakfast()">DESAYUNO</button>
         <button class="lunch" (click)="getmenulunch()">ALMUERZO</button>
@@ -16,25 +18,25 @@
     <div class="container-grid">
         <div *ngFor="let item of products">
             <div class="products">
+                <div>
                 <div class="image"><img [src]="item.image" alt="" class="products-img"></div> 
+                <span class="COP">$<input type="text" #price value={{item.price}} class="price"></span>
+            </div>
                 <div class="info">
-                    <div>{{item.name}}</div>
-                    <input type="text" #price value={{item.price}} class="price">
+                    <span class="productName">{{item.name}}</span>
+                    
                     <div>
                     <button class="btn-counter" (click)="decreaseCounter(counterValue)">-</button><input type="text" class="counter" #counterValue value="0"> 
                     <button class="btn-counter" (click)="increaseCounter(counterValue)">+</button>
                 </div> 
-                <div class="plus">
-            </div>
             <button class="addButton" (click)="addItem(item, counterValue)" >Agregar</button>
-                </div>
-                
+                </div> 
             </div>
         </div>
     </div>
 
     <div class="menuList">
-    <h2 class="menuTitle">MENU</h2>
+    <h2 class="menuTitle">ORDEN</h2>
 
 
     <app-order 

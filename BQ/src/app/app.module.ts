@@ -15,7 +15,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { ViewChefComponent } from './components/view-chef/view-chef.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { Page404Component } from './components/page404/page404.component';
-import { ChefViewComponent } from './components/chef-view/chef-view.component';
+
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { ChefViewComponent } from './components/chef-view/chef-view.component';
     ViewChefComponent,
     ViewAdminComponent,
     Page404Component,
-    ChefViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,7 @@ import { ChefViewComponent } from './components/chef-view/chef-view.component';
     ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {

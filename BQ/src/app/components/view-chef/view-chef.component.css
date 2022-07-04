@@ -12,6 +12,7 @@ body {
     box-shadow: rgb(137, 129, 129) 3px 3px  5px;
     border: 1px solid rgb(137, 129, 129) ;
     backdrop-filter: blur(5px);
+    padding: 3%;
 }
 
 h2{
@@ -22,7 +23,7 @@ h2{
 .orderContainer{
     background-color: white;
     box-shadow: rgb(161, 152, 152) 3px 3px  5px;
-    margin: 2rem;
+    margin: 1rem;
     padding: 1%;
 }
 
@@ -51,7 +52,7 @@ h2{
     width: fit-content;
     border: none;
     background-color: transparent;
-    margin-left: 97%;
+    margin-left: 98%;
 }
 
 .deleteIcon{
@@ -100,4 +101,6 @@ h2{
     padding: 3%;
     margin-bottom: 5%;
 }
+
+
 

@@ -17,7 +17,7 @@
         <span class="info">estado: <input type="text" disabled #status value="{{item.status}}" class="status"></span>
     </div>
        <div class="divChangeStatus">
-        <button class="statusButton" (click)="changeStatus(doneDate, idOrder.value, status)" >Ok</button>
+        <button class="statusButton" (click)="changeStatus(doneDate, idOrder.value, status, statusButton)" #statusButton >Ok</button>
         <input type="text" class="dateExit" #doneDate>
     </div>
     </div>

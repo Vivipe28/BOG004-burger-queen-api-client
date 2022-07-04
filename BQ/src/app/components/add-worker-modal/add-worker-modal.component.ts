@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { workersInterface } from '../models/Workers'
+import { AdminViewService } from '../../services/admin-view.service'
+import { ViewAdminComponent } from '../../components/view-admin/view-admin.component'
 @Component({
   selector: 'app-add-worker-modal',
   templateUrl: './add-worker-modal.component.html',
@@ -12,11 +14,7 @@ export class AddWorkerModalComponent implements OnInit {
   addWorker: workersInterface = {
     email: '',
     password: '',
-    roles: {
-      admin: false,
-      chef: false,
-      waiter: false,
-    }
+    roles: '',
   };
 
   get emailControl(): FormControl {
@@ -33,7 +31,7 @@ export class AddWorkerModalComponent implements OnInit {
   
   @Output() closeModal = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private adminService: AdminViewService, private viewAdminComponent :ViewAdminComponent) { }
 
   ngOnInit(): void {
     this.addWorkerForm = new FormGroup({
@@ -49,12 +47,21 @@ export class AddWorkerModalComponent implements OnInit {
       password: this.addWorkerForm.value['password'],
       roles: this.addWorkerForm.value['rol'],
     }
-    console.log(new workersInterface(this.addWorker.email, this.addWorker.password, this.addWorker.roles));
-    console.log(this.addWorker);
-      
+    this.adminService.addWorkers(new workersInterface(this.addWorker.email, this.addWorker.password, this.addWorker.roles)).subscribe(
+      (res) => {console.log(res)}
+    )
+    this.adminService.getWorkers().subscribe(
+      (res: any) => {
+        this.viewAdminComponent.workers= res
+        console.log(res)
+      },
+      (err: any) => {
+        err
+      })
   }
 
   onCloseModal(): void{
     this.closeModal.emit();
+    
   }
 }

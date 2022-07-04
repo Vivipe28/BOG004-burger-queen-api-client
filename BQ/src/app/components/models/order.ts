@@ -1,17 +1,18 @@
 import { Products } from "./Products";
 
 export class Order {
-    // userId!: number;
+    userId!: number;
     client!: string;
     products!: [Products];
-    // status!: string;
-    // dateEntry!: Date
+    status!: string;
+    dateEntry!: string
 
-    constructor(client: string, products: [Products]){
+    constructor(userId:any, client: string, products: [Products], status: string, dateEntry:string){
         
-        // this.userId = userId;
+        this.userId = userId;
         this.client = client;
         this.products = products;
-        // this.dateEntry = dateEntry
+        this.status = status;
+        this.dateEntry = dateEntry
     }
 }

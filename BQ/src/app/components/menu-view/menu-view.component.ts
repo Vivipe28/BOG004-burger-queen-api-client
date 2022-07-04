@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Order } from 'src/app/components/models/order';
-import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthService } from '../../services/http.service';
 import { menuService } from '../../services/menu-view.service';
-import { Client } from '../models/LoginObject';
 import { Products } from '../models/Products';
+import { Order } from '../models/order';
+import { status } from '../models/status';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'menu-view',
@@ -14,112 +14,109 @@ import { Products } from '../models/Products';
 })
 export class MenuViewComponent implements OnInit {
 
-  nameClientForm!: FormGroup;
-  client: Client = {
-    client: '',
-  };
-  products: any = [];
+  Client: string = '';
+
+  Total: number = 0;
+
+  public products: any = [];
+
   public orderArray: any = [];
 
-  get nameControl(): FormControl {
-    return this.nameClientForm.get('client') as FormControl
+  producto!: Products;
+
+  date = new Date;
+
+  today = this.date.toLocaleString();
+  
+
+  increaseCounter(counter: any): void {
+    counter.value++;
   }
 
-  constructor(private menuViewService: menuService,
-    private authservice: AuthService, private snackservice: NotifierService,) { }
+  decreaseCounter(counter: any): void {
+    if (counter.value > 0)
+      counter.value--
+  }
+
+  constructor(private menuViewService: menuService,private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
         this.products = res
       },
-      err => {
+      err =>{
         console.log(err);
       })
-
-      this.nameClientForm = new FormGroup({
-        client: new FormControl(''),
-      })
-  }
-
-  pushClient(){
-    this.client = {
-      client: this.nameClientForm.value['client'],
-    }
-  }
-
-  increaseCounter(counter: any, price: any, result: any): void {
-    counter.value++;
-    this.total(counter, price, result)
-  }
-
-  decreaseCounter(counter: any, price: any, result: any): void {
-      counter.value--
-    this.total(counter, price, result)
   }
 
   getmenubreakfast() {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        // this.products = res
-        const filtro = res.filter((item: any) => item.type === 'Desayuno')
+        const filtro = res.filter((item: any) => {
+          if (item.type === 'Desayuno') {
+            return {
+              qty: 1,
+              product: item
+            }
+          }
+          return
+        })
         this.products = filtro
         return filtro;
-
       },
       err => {
         console.log(err);
       }
     )
-    // console.log('Products',this.products);
   }
 
   getmenulunch() {
     this.menuViewService.getMenu().subscribe(
       (res: any) => {
-        // this.products = res
-        const filtro = res.filter((item: any) => item.type === 'Almuerzo')
+        const filtro = res.filter((item: any) => {
+          if (item.type === 'Almuerzo') {
+            return {
+              qty: 1,
+              product: item
+            }
+          }
+          return
+        })
         this.products = filtro
         return filtro;
       }
     )
   }
-  
-  addItem(item:any, counter:any, total:any){
-    this.orderArray.push(new Products(counter.value, item, total.value))
+
+  addItem(item: any, counter: any) {
+    this.orderArray.push(new Products(counter.value, item),)
+    this.SetTotalOrder()
   }
 
+  SetTotalOrder() {
+    this.Total = 0;
+    if (this.orderArray.length > 0) {
+      this.orderArray.forEach((item: { total: number; }) => {
+        this.Total = this.Total + item.total;
+      });
+    }
+  }
   deleteItem(itemToDelete: any): void{
     if (confirm('Estas seguro de eliminar este producto?')){
       this.orderArray = this.orderArray.filter((item:any) => item !== itemToDelete)
-    }
+    };
+    this.SetTotalOrder()
   }
 
-  get totaPur(): number {
-    console.log(this.orderArray)
-    return this.orderArray.reduce((acc:any, total:any) => console.log(acc+=total.total), 0)
-    //this.orderArray.reduce((acc:any , 
-    // .reduce((acc:any, prod:any) => acc+= prod.num ,0);
+  sendOrder() {
+    this.Client = (document.querySelector('.clientName')as HTMLInputElement).value
+    this.menuViewService.postOrder(new Order(this.authservice.getId(),this.Client, this.orderArray,status[0],this.today))
+    .subscribe((resp) => {
+      this.router.navigate(['/chef']);
+    })
   }
 
-  total(counter: any, price: any, result: any) {
-    result.value = counter.value * price.value;
-  }
   
-
-
-  calcTotal() {
-    return this.orderArray
-    // return this.orderArray.total.reduce((acc:any, prod:any) => console.log(acc+= prod.num ,0))
-  }
-
-  logOut() {
-    console.log('you are out');
-    this.authservice.logout()
-  }
-
-  sendOrder(){
-    console.log(new Order(this.nameClientForm.value, this.orderArray));
-  }
+  
 }

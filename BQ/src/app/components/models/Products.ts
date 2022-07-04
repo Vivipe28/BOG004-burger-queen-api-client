@@ -5,9 +5,9 @@ export class Products{
     product!: IProductsItem;
     total!: number;
 
-    constructor( qty:number, product:IProductsItem, total:number){
+    constructor( qty:number, product:IProductsItem){
         this.qty = qty;
-        this.product = product;
-        this.total = total;
+        this.product = product
+        this.total = qty * this.product.price;
     }
 }

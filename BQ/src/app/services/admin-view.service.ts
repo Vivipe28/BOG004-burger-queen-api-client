@@ -17,8 +17,23 @@ export class AdminViewService {
     return this.http.get<IWorkersItem>(path)
   }
 
-  deleteWorkers(): Observable<IWorkersItem> {
+  getWorker(id: any) {
+    const path = this.url + '/users/' + id
+    return this.http.get(path)
+  }
+
+  addWorkers(worker: any) {
     const path = this.url + '/users'
-    return this.http.delete<IWorkersItem>(path)
+    return this.http.post(path, worker)
+  }
+
+  editWorkers(id: any, worker:any) {
+    const path = this.url + '/users/' + id
+    return this.http.patch(path, worker)
+  }
+
+  deleteWorkers(id: any) {
+    const path = this.url + '/users/' + id
+    return this.http.delete(path)
   }
 }

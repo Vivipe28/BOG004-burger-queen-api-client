@@ -1,0 +1,8 @@
+
+<body>
+<span #qty>UND {{products?.qty}} </span>
+<span>{{products.product?.name}}</span>
+<span #price class="infoPrice">PRECIO: $ {{products.product?.price}}</span>
+<span class="Total">SUBTOTAL $ {{products?.total}}</span>
+<button class ='delete' (click)="onDeleteOrder()"><i class="fa-solid fa-trash"></i></button>
+</body>

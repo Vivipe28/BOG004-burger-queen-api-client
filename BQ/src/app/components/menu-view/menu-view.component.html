@@ -1,14 +1,14 @@
 <body>
+    <div class="menuContainer">
     <div class="header">
         <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
-        <button (click)="logOut()" class="logOut">Cerrar sesión</button>
         <div class="infoClient">
             <h3>Nombre del cliente</h3>
-            <form [formGroup]= "nameClientForm">
-                <input type="text" name="clientName" class="clientName" formControlName="client">
-            </form>
+                <input type="text" name="clientName" class="clientName" >
         </div>
     </div>
+
+    <h2 class="menuTitle">MENU</h2>
 
     <div class="menuButtons">
         <button class="breakfast" (click)="getmenubreakfast()">DESAYUNO</button>
@@ -18,26 +18,25 @@
     <div class="container-grid">
         <div *ngFor="let item of products">
             <div class="products">
-                <div class="image"><img [src]="item.image" alt="" class="products-img"></div>
-                <div class="info">
-                    <div>{{item.name}}</div>
-                    <input type="text" #price value={{item.price}} class="price">
-                    <div>
-                    <button class="btn-counter" (click)="decreaseCounter(counterValue, price, result)">-</button><input type="text" class="counter" #counterValue value="0"> 
-                    <button class="btn-counter" (click)="increaseCounter(counterValue, price, result)">+</button>
-                </div> 
-                <div class="plus"> 
-                <p>Total: </p><input type="text" class="Result" #result value="0">
+                <div>
+                <div class="image"><img [src]="item.image" alt="" class="products-img"></div> 
+                <span class="COP">$<input type="text" #price value={{item.price}} class="price"></span>
             </div>
-            <button class="addButton" (click)="addItem(item, counterValue, result)" (click)="pushClient()">Agregar</button>
-                </div>
-                
+                <div class="info">
+                    <span class="productName">{{item.name}}</span>
+                    
+                    <div>
+                    <button class="btn-counter" (click)="decreaseCounter(counterValue)">-</button><input type="text" class="counter" #counterValue value="0"> 
+                    <button class="btn-counter" (click)="increaseCounter(counterValue)">+</button>
+                </div> 
+            <button class="addButton" (click)="addItem(item, counterValue)" >Agregar</button>
+                </div> 
             </div>
         </div>
     </div>
 
     <div class="menuList">
-        <h2 class="menuTitle">MENU</h2>
+    <h2 class="menuTitle">ORDEN</h2>
 
 
     <app-order 
@@ -46,9 +45,9 @@
     (orderDelete)="deleteItem(product)"
     ></app-order>
 
-    <p class="total"><span class="total-label">Total: {{ totaPur }}</span> </p>
+    <p class="total"><span class="total-label">Total: </span>{{Total}} </p>
 
-        <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
-    </div>
-
+    <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
+</div>
+</div>
 </body>

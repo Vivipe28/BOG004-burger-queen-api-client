@@ -1,31 +1,43 @@
 <body>
-    <div class="view-header">
-        <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
+    <div class="containt">
+        <div class="view-header">
+            <img src="../../assets/Ellipse 2.png" alt="logo" class="logo">
+        </div>
+        <p>LISTADO DE COLABORADORES</p>    
+        <button class="addWorker" (click)="openModal()">Agregar colaborador</button>
+        
+        <div *ngIf="modalSwitch === true">
+            <app-add-worker-modal (closeModal)="closeModal()"></app-add-worker-modal>
+        </div>
+        <div class="table-container">
+            <table class="wokersList">
+                <thead class="thWorkers">
+                    <tr>
+                        <th class="id" class="sticky" style="width:10% ;">No.</th>
+                        <th class="email" class="sticky">Correo</th>
+                        <th class="rol" class="sticky">Rol</th>
+                    </tr>
+                </thead>
+                <tbody class="tbWorkers" *ngFor="let item of workers">
+                    <tr>
+                        <td> <input type="text" value="{{item.id}}" #idWorker></td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.roles}}</td>
+                        <td>
+                            <button class="editWorker" (click)="openModalEdit()" (click)="getWorker1(idWorker.value)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <div *ngIf="modalSwitchEdit === true">
+                                <app-edit-worker-modal (closeModalEdit)="closeModalEdit()"></app-edit-worker-modal>
+                            </div>
+                        </td>
+                        <td><button class="deleteWorker" (click)=" deleteW(idWorker.value)"><mat-icon>delete</mat-icon></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <button class="logOut" (click)="logOut()">Salir</button>
     </div>
-    <p>LISTADO DE COLABORADORES</p>    
-    <button class="addWorker" (click)="openModal()">Agregar colaborador</button>
     
-    <div *ngIf="modalSwitch === true">
-        <app-add-worker-modal (closeModal)="closeModal()"></app-add-worker-modal>
-    </div>
-
-    <table class="wokersList">
-        <thead class="thWorkers">
-            <tr>
-                <th class="id">No.</th>
-                <th class="email">Correo</th>
-                <th class="rol">Rol</th>
-            </tr>
-        </thead>
-        <tbody class="tbWorkers" *ngFor="let item of workers">
-            <tr>
-                <td>{{item.id}}</td>
-                <td>{{item.email}}</td>
-                <td >{{item.roles}}</td>
-                <td><button class="editWorker">Editar</button></td>
-                <td><button class="deleteWorker" (click)=" deleteW()">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="logOut" (click)="logOut()">Salir</button>
 </body>

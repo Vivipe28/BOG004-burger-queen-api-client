@@ -1,0 +1,34 @@
+<div class="modal">
+    <div class="modal-container">
+        <button class="closemodal" (click)="onCloseModalEdit()">X</button>
+        <form [formGroup]= 'editWorkerForm'>
+            <ul>
+                <li>
+                    <label for="id">No.:</label><br>
+                    <input type="text" name="id" formControlName="id" #idValue>
+                    <button ></button>
+                </li>
+                <li>
+                    <label for="email">Email:</label><br>
+                    <input type="text" class="email" name="email" formControlName="email">
+                </li>
+                <li>
+                    <label for="password">Password:</label><br>
+                    <input type="password" name="password" formControlName="password">
+                </li>
+                <li>
+                    <label for="password">Rol:</label><br>
+                    <select name="rol" formControlName="rol">
+                        <option value="">Seleccione el rol</option>
+                        <option value="admin">Administrador</option>
+                        <option value="waiter">Mesero</option>
+                        <option value="chef">Chef</option>
+                    </select>
+                </li>
+                <li class="button">
+                    <button type="submit">Actualizar</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

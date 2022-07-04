@@ -1,0 +1,18 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.218);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container{
+    margin: auto;
+    border: 1px 1px 1px 1px solid salmon;
+    width: 50%;
+    background: salmon;
+}

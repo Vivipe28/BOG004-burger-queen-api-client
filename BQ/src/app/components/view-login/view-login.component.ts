@@ -17,44 +17,43 @@ export class ViewLoginComponent implements OnInit {
     password: '',
   };
 
-  get emailControl():FormControl {
+  get emailControl(): FormControl {
     return this.loginForm.get('email') as FormControl
   }
 
-  get passwordControl():FormControl {
+  get passwordControl(): FormControl {
     return this.loginForm.get('password') as FormControl
   }
-  
+
   constructor(private httpServices: AuthService, private router: Router) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     })
   }
 
-
-  onSubmit(){
+  onSubmit() {
     this.login = {
       email: this.loginForm.value['email'],
       password: this.loginForm.value['password'],
     }
+
     this.httpServices.login(this.login.email, this.login.password)
-    .subscribe((resp: any) => {
-                sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
-                localStorage.setItem('user', JSON.stringify(resp.user.roles));
-                sessionStorage.setItem('id', JSON.stringify(resp.user.id));
-                if (resp.user.roles.waiter) {
-                    this.router.navigate(['/menu']);
-                } else if (resp.user.roles.chef) {
-                    this.router.navigate(['/chef']);
-                } else if (resp.user.roles.admin) {
-                    this.router.navigate(['/admin']);
-                }
-            })
-    
-}
+      .subscribe((resp: any) => {
+        console.log(resp);
+        sessionStorage.setItem('token', JSON.stringify(resp.accessToken));
+        localStorage.setItem('user', JSON.stringify(resp.user.roles));
+        if (resp.user.roles === 'waiter') {
+          this.router.navigate(['/menu']);
+        } else if (resp.user.roles === 'chef') {
+          this.router.navigate(['/chef']);
+        } else if (resp.user.roles === 'admin') {
+          this.router.navigate(['/admin']);
+        }
+    })
+  }
 }
 
 

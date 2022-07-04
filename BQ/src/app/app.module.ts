@@ -15,7 +15,13 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { ViewChefComponent } from './components/view-chef/view-chef.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { Page404Component } from './components/page404/page404.component';
+<<<<<<< HEAD
 import { MatIconModule } from '@angular/material/icon';
+=======
+import { AddWorkerModalComponent } from './components/add-worker-modal/add-worker-modal.component';
+import { MatIconModule } from '@angular/material/icon';
+import { EditWorkerModalComponent } from './components/edit-worker-modal/edit-worker-modal.component';
+>>>>>>> 52e62bc4be8ed60976ec161e6883d1e36adf88b4
 
 
 
@@ -28,6 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
     ViewChefComponent,
     ViewAdminComponent,
     Page404Component,
+    AddWorkerModalComponent,
+    EditWorkerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     BrowserAnimationsModule,
     FormsModule,
+<<<<<<< HEAD
     MatIconModule
+=======
+    MatIconModule,
+>>>>>>> 52e62bc4be8ed60976ec161e6883d1e36adf88b4
   ],
   providers: [
     {

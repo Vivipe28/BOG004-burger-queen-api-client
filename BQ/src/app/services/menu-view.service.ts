@@ -12,9 +12,9 @@ export class menuService {
     
     constructor(private http: HttpClient) { }
 
-    getMenu(): Observable<IProductsItem>{
+    getMenu(): Observable<IProductsItem> {
         const path = this.url + '/products'
-    return this.http.get<IProductsItem>(path)
+        return this.http.get<IProductsItem>(path)
     }
 
     postOrder(Order: any){

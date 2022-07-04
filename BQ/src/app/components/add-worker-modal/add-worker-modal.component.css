@@ -1,0 +1,47 @@
+.modal{
+    width: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+}
+
+.modal-container{
+    width: 70%;
+    height: 40%;
+    background: #FFF7D2;
+    border-radius: 6px;
+    padding: 4%;
+}
+
+ul{
+    width: 90%;
+}
+
+li {
+    list-style: none;
+    width: 100%;
+}
+
+.addWorker, .closemodal{
+    font-weight: bolder;
+    background-color: #FFC700;
+    border-style: none;
+    padding: 3%;
+    margin: 4%;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 1px 1px 2px rgb(137, 129, 129) ;
+}
+
+button:hover{
+    background-color: #8D0000;
+    color: #FFF7D2;
+}
+
+

@@ -15,6 +15,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { ViewChefComponent } from './components/view-chef/view-chef.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { Page404Component } from './components/page404/page404.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -36,6 +37,7 @@ import { Page404Component } from './components/page404/page404.component';
     MatSnackBarModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatIconModule
   ],
   providers: [
     {

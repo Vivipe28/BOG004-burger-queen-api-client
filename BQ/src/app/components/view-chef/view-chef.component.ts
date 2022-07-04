@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { chefService } from 'src/app/services/chef.service';
 import { AuthService } from 'src/app/services/http.service';
 import { status } from '../models/status';
@@ -16,7 +17,9 @@ export class ViewChefComponent implements OnInit {
 
   show = false;
 
-  constructor(private chefService: chefService, private authservice: AuthService) { }
+  statusOrder = false;
+
+  constructor(private chefService: chefService, private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -28,7 +31,7 @@ export class ViewChefComponent implements OnInit {
   changeStatus(datetext:any, id:any, statusText:any){
     this.show = true;
     let date = new Date;
-    let today = date.toLocaleString();
+    let today = date.toLocaleTimeString();
     datetext.value = today
 
     let statusChanged = {
@@ -47,6 +50,10 @@ export class ViewChefComponent implements OnInit {
         this.responseOrdersArray = resp
       })
     })
+  }
+
+  goMenu(){
+    this.router.navigate(['/menu'])
   }
 
   logOut() {

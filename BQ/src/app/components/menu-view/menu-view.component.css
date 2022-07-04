@@ -45,7 +45,7 @@ body {
 }
 
 .breakfast,
-.lunch, .sendOrder {
+.lunch, .sendOrder, .goOrders, .exit {
     padding: 1rem;
     background-color: #FFC700;
     border-style: none;
@@ -54,7 +54,7 @@ body {
 }
 
 .breakfast:hover,
-.lunch:hover, .sendOrder:hover, .addButton:hover {
+.lunch:hover, .sendOrder:hover, .addButton:hover, .goOrders:hover, .exit:hover {
     background-color: #8D0000;
     color: #FFF7D2;
 }
@@ -65,6 +65,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     width: fit-content;
+
+    margin-bottom: 4%;
 }
 
 .products{
@@ -145,8 +147,11 @@ body {
 }
 
 .menuList{
-    padding: 3rem;
+    margin: 2rem;
+    padding: 2rem;
     text-align: center;
+    box-shadow: rgb(137, 129, 129) 3px 3px  5px;
+    background-color:white;
 }
 
 .menuTitle{
@@ -154,5 +159,18 @@ body {
 }
 
 .total{
-    margin: 3rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+
+.buttonSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30%;
+    margin: 5%;
+}
+
+.total-label{
+    color: #8D0000;
+    font-size: 1.2rem;
 }

@@ -12,7 +12,6 @@ import { ViewAdminComponent } from '../view-admin/view-admin.component';
 export class EditWorkerModalComponent implements OnInit {
 
   public getResponse: any = {}
-  public saveResponse: any = []
 
   editWorkerForm!: FormGroup;
   editworker: workers = {
@@ -56,29 +55,22 @@ export class EditWorkerModalComponent implements OnInit {
       roles: this.editWorkerForm.value['rol']
     }
 
+    // console.log(this.viewAdminComponent.getWorkerResponse);
     
-    this.adminService.getWorker(localStorage.getItem('userId')).subscribe(
-      (res) => {
-        let emailF = document.querySelector('.email') as HTMLInputElement;
-        
-        this.getResponse = res   
-        this.saveResponse.push(this.getResponse.email)
-        console.log(this.saveResponse);
-        
-        console.log(this.getResponse.email);
-          
-        this.getResponse.id = this.editworker.id
-        this.getResponse.email = emailF.value
-        this.getResponse.password = this.editworker.password
-        this.getResponse.roles = this.editworker.roles
-        console.log(emailF.value);
-      }
-    )
+   this.viewAdminComponent.getWorkerResponse
+  }
 
+  public email: string = '';
+
+  patch(){
+    this.viewAdminComponent.getWorkerResponse
+    this.email = this.viewAdminComponent.getWorkerResponse.email
+    console.log(this.viewAdminComponent.getWorkerResponse);
   }
 
 
   
+
   onCloseModalEdit(): void{
     this.closeModalEdit.emit();
   }

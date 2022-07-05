@@ -45,11 +45,7 @@ body {
 }
 
 .breakfast,
-<<<<<<< HEAD
 .lunch, .sendOrder, .goOrders, .exit {
-=======
-.lunch, .sendOrder, .logOut {
->>>>>>> 52e62bc4be8ed60976ec161e6883d1e36adf88b4
     padding: 1rem;
     background-color: #FFC700;
     border-style: none;

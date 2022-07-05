@@ -58,6 +58,15 @@ export class AddWorkerModalComponent implements OnInit {
       (err: any) => {
         err
       })
+      this.reset()
+  }
+
+  reset() {
+    this.addWorkerForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+      rol: new FormControl(''),
+    })
   }
 
   onCloseModal(): void{

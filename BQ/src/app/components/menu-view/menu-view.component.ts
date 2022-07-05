@@ -26,8 +26,9 @@ export class MenuViewComponent implements OnInit {
 
   date = new Date;
 
-  today = this.date.toLocaleString();
+  today = this.date.toLocaleTimeString();
   
+  showTotal = false;
 
   increaseCounter(counter: any): void {
     counter.value++;
@@ -92,6 +93,7 @@ export class MenuViewComponent implements OnInit {
   addItem(item: any, counter: any) {
     this.orderArray.push(new Products(counter.value, item),)
     this.SetTotalOrder()
+    this.showTotal = true;
   }
 
   SetTotalOrder() {
@@ -117,6 +119,11 @@ export class MenuViewComponent implements OnInit {
     })
   }
 
-  
-  
+  goOrders(){
+    this.router.navigate(['/chef']);
+  }
+
+  exit(){
+    this.authservice.logout()
+  }
 }

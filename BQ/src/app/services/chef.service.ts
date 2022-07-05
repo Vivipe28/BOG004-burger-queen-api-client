@@ -13,9 +13,9 @@ export class chefService {
     
     constructor(private http: HttpClient) { }
 
-    getOrders():Observable<Order>{
+    getOrders(){
         const path = this.url + '/orders';
-        return this.http.get<Order>(path)
+        return this.http.get(path)
     }
 
     patchStatus(status:any, id:any){

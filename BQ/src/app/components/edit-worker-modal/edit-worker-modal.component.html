@@ -4,20 +4,20 @@
         <form [formGroup]= 'editWorkerForm'>
             <ul>
                 <li>
-                    <label for="id">No.:</label><br>
+                    <label for="id">No.:</label>
                     <input type="text" name="id" formControlName="id" #idValue>
                     <button ></button>
                 </li>
                 <li>
-                    <label for="email">Email:</label><br>
+                    <label for="email">Email:</label>
                     <input type="text" class="email" name="email" formControlName="email">
                 </li>
                 <li>
-                    <label for="password">Password:</label><br>
+                    <label for="password">Password:</label>
                     <input type="password" name="password" formControlName="password">
                 </li>
                 <li>
-                    <label for="password">Rol:</label><br>
+                    <label for="password">Rol:</label>
                     <select name="rol" formControlName="rol">
                         <option value="">Seleccione el rol</option>
                         <option value="admin">Administrador</option>
@@ -26,7 +26,7 @@
                     </select>
                 </li>
                 <li class="button">
-                    <button type="submit">Actualizar</button>
+                    <button type="submit" class="toUpdate">Actualizar</button>
                 </li>
             </ul>
         </form>

@@ -24,7 +24,6 @@
             </div>
                 <div class="info">
                     <span class="productName">{{item.name}}</span>
-                    
                     <div>
                     <button class="btn-counter" (click)="decreaseCounter(counterValue)">-</button><input type="text" class="counter" #counterValue value="0"> 
                     <button class="btn-counter" (click)="increaseCounter(counterValue)">+</button>
@@ -35,9 +34,8 @@
         </div>
     </div>
 
-    <div class="menuList">
+    <div class="menuList" *ngIf="showTotal">
     <h2 class="menuTitle">ORDEN</h2>
-
 
     <app-order 
     *ngFor="let product of orderArray" 
@@ -45,9 +43,14 @@
     (orderDelete)="deleteItem(product)"
     ></app-order>
 
-    <p class="total"><span class="total-label">Total: </span>{{Total}} </p>
-
-    <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
+    <p class="total" ><span class="total-label">TOTAL </span>{{Total}} </p>
 </div>
+
+<div class="buttonSection">
+    <button class="sendOrder" (click)="sendOrder()">Finalizar pedido</button>
+    <button class="goOrders" (click)="goOrders()">Ver pedidos</button>
+    <button class="exit" (click)="exit()">Salir</button>
+</div>
+
 </div>
 </body>

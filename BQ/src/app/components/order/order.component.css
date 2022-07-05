@@ -1,14 +1,25 @@
 body{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
     align-items: center;
     margin: 2rem;
-    background-color: white;
+    background-color:white;
     border-radius: 3px;
     padding: 1rem;
-    box-shadow: 2px 2px 4px rgb(196, 196, 190);
+
 }
 
 .keyText{
-    color: #8D0000;
+    color: #FFC700;
+    font-size:2rem;
+}
+
+.delete{
+    border: none;
+    background-color: white;
+}
+
+
+.keyText:hover{
+    color: #8D0000
 }

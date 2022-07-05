@@ -57,10 +57,14 @@ p{
 .editWorker, .deleteWorker{
     width: 32px;
     height: 32px;
-    background-color: #8D0000;
-    color: #FFF7D2;
+    background-color: #f4ede7db;
     border-style: none;
     border-radius: 100%;
+    color: #FFC700;
+}
+
+.editWorker:hover, .deleteWorker:hover{
+    color: #8D0000
 }
 
 .table-container{

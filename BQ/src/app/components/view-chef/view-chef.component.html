@@ -1,31 +1,35 @@
 <body>
-    
+
     <div class="orderListContainer">
         <h2>LISTA DE PEDIDOS</h2>
-    <div class="orderContainer" *ngFor="let item of responseOrdersArray">
-        <button class="delete" (click)="deleteOrder(idOrder.value)"><mat-icon class="deleteIcon">delete_forever</mat-icon></button>
-        <div class="order">
-            <div class="infoOrder">
-        <span class="info">orden no: <input type="text" disabled value="{{item.id}}" #idOrder class="idOrder"></span>
-        <p class="client"><span class="info">cliente: </span>{{item.client}}</p>
-        <div class="infoProduct" *ngFor="let product of item.products">
-            pedido: 
-            <span class="qty">{{product.qty}}  </span>
-            <span class="nameProduct">{{product.product.name}}</span>
+        <div class="orderContainer" *ngFor="let item of responseOrdersArray">
+            <button class="delete" (click)="deleteOrder(idOrder.value)">
+                <mat-icon class="deleteIcon">delete_forever</mat-icon>
+            </button>
+            <div class="order">
+                <div class="infoOrder">
+                    <span class="info">orden no: <input type="text" disabled value="{{item.id}}" #idOrder
+                            class="idOrder"></span>
+                    <p class="client"><span class="info">cliente: </span>{{item.client}}</p>
+                    <div class="infoProduct" *ngFor="let product of item.products">
+                        pedido:
+                        <span class="qty">{{product.qty}} </span>
+                        <span class="nameProduct">{{product.product.name}}</span>
+                    </div>
+                    <p class="date"><span class="info">hora de ingreso: </span>{{item.dateEntry}}</p>
+                    <span class="info">estado: <input type="text" disabled #status value="{{item.status}}"
+                            class="status"></span>
+                </div>
+                <div class="divChangeStatus">
+                    <button class="statusButton" [style.backgroundColor]="status.value === 'Entregado' ? '#43f82b' : '#FFC700'"  (click)="changeStatus(doneDate, idOrder.value, status)"
+                        #statusButton >Ok</button>
+                    <input type="text" class="dateExit" #doneDate value="{{item.exitDate}}">
+                </div>
+            </div>
         </div>
-        <p class="date"><span class="info">hora de ingreso: </span>{{item.dateEntry}}</p>
-        <span class="info">estado: <input type="text" disabled #status value="{{item.status}}" class="status"></span>
+        <div class="buttonSection">
+            <button class="goMenu" (click)="goMenu()">Menú</button>
+            <button class="logOut" (click)="logOut()">Salir</button>
+        </div>
     </div>
-       <div class="divChangeStatus">
-        <button class="statusButton" (click)="changeStatus(doneDate, idOrder.value, status, statusButton)" #statusButton >Ok</button>
-        <input type="text" class="dateExit" #doneDate>
-    </div>
-    </div>
-</div>
-<div class="buttonSection">
-<button class="goMenu" (click)="goMenu()">Menú</button>
-<button class="logOut" (click)="logOut()">Salir</button>
-</div>
-</div>
 </body>
-

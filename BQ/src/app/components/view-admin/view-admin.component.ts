@@ -30,13 +30,11 @@ export class ViewAdminComponent implements OnInit {
 
   openModal(){
     this.modalSwitch = true;
-    //console.log(this.modalSwitch);
     
   }
 
   closeModal(){
     this.modalSwitch = false;
-    //console.log(this.modalSwitch);
   }
 
   openModalEdit(id:any){
@@ -52,29 +50,21 @@ export class ViewAdminComponent implements OnInit {
     this.modalSwitchEdit = false; 
   }
 
-  // getWorker1(id: any){
-  //   this.adminService.getWorker(id).subscribe(
-  //     res => {
-  //       this.getWorkerResponse = res
-  //     }
-  //   )
-  // }
-
   deleteW(id: any) {
     if (confirm('¿Estas seguro de eliminar el colaborador?')) {
       this.adminService.deleteWorkers(id).subscribe(
         (res: any) => {
-          this.adminService.getWorkers().subscribe(
-            (res: any) => {
-              this.workers = res
-            },
-            (err: any) => {
-              err
-            })
+
         }
       )
-      
     }
+    this.adminService.getWorkers().subscribe(
+      (res: any) => {
+        this.workers = res
+      },
+      (err: any) => {
+        err
+      })
   }
 
   logOut() {

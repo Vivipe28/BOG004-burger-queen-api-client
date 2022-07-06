@@ -36,4 +36,9 @@ export class AdminViewService {
     const path = this.url + '/users/' + id
     return this.http.delete(path)
   }
+
+  patchWorker(id:any, worker:any){
+    const path = this.url + '/users/' + id
+    return this.http.patch(path, worker)
+  }
 }

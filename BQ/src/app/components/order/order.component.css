@@ -1,6 +1,6 @@
 body{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr;
     align-items: center;
     margin: 2rem;
     background-color:white;
@@ -9,6 +9,11 @@ body{
 
 }
 
+.infoItem{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    gap: 5%;
+}
 .keyText{
     color: #FFC700;
     font-size:2rem;
@@ -22,4 +27,20 @@ body{
 
 .keyText:hover{
     color: #8D0000
+}
+
+@media screen and (max-width: 720px){
+    body{
+        font-size: small;
+        margin: 0.5rem;
+        padding: 0;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .infoItem{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        margin: 5%;
+    }
 }

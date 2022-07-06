@@ -55,7 +55,7 @@ li {
 
 .logo{
     padding: 2%;
-    margin: 2% 2% 4%;
+    margin: 8% 2% 4%;
     width: 250px;
 }
 
@@ -105,4 +105,15 @@ button:hover{
 .errorMsg{
     color: #8D0000 ;
     margin-top: 2%;
+}
+
+@media screen and (max-width: 720px){
+
+    body{
+        background-image: url('../../../assets/rotateImg.png');
+    }
+
+    .containt{
+        width: 85%;
+    }
 }

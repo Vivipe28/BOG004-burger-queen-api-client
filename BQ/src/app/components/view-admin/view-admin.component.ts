@@ -67,14 +67,15 @@ export class ViewAdminComponent implements OnInit {
           err
         }
       )
-      this.adminService.getWorkers().subscribe(
-        (res: any) => {
-          this.workers = res
-        },
-        (err: any) => {
-          err
-        })
+      
     }
+    this.adminService.getWorkers().subscribe(
+      (res: any) => {
+        this.workers = res
+      },
+      (err: any) => {
+        err
+      })
   }
 
   logOut() {

@@ -50,11 +50,12 @@ export class ViewChefComponent implements OnInit {
   deleteOrder(id:any){
     if(confirm('Estas seguro de eliminar la orden?')){ 
     this.chefService.deleteOrder(id).subscribe((resp)=>{
-      this.chefService.getOrders().subscribe((resp)=> {
-        this.responseOrdersArray = resp
-      })
+      console.log(id)
     })
     }
+    this.chefService.getOrders().subscribe((resp)=> {
+      this.responseOrdersArray = resp
+    })
   }
 
   goMenu(){
@@ -65,5 +66,5 @@ export class ViewChefComponent implements OnInit {
     console.log('you are out');
     this.authservice.logout()
   }
-  
+
 }

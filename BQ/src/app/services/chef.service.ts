@@ -25,6 +25,8 @@ export class chefService {
 
     deleteOrder(id:any){
         const path = this.url + '/orders/'+ id;
+        console.log(path);
+        
         return this.http.delete(path)
     }
 

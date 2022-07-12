@@ -19,12 +19,12 @@
                     </tr>
                 </thead>
                 <tbody class="tbWorkers" *ngFor="let item of workers">
-                    <tr>
+
                         <td> <input type="text" value="{{item.id}}" #idWorker></td>
                         <td>{{item.email}}</td>
                         <td>{{item.roles}}</td>
                         <td>
-                            <button class="editWorker" (click)="openModalEdit()" (click)="getWorker1(idWorker.value)">
+                            <button class="editWorker" (click)="openModalEdit(idWorker.value)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                             <div *ngIf="modalSwitchEdit === true">
@@ -32,7 +32,7 @@
                             </div>
                         </td>
                         <td><button class="deleteWorker" (click)=" deleteW(idWorker.value)"><mat-icon>delete</mat-icon></button></td>
-                    </tr>
+                 
                 </tbody>
             </table>
         </div>

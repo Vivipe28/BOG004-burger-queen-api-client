@@ -1,20 +1,20 @@
 .modal{
-    width: auto;
-    position: fixed;
+    width:50%;
+    position:fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: start;
+    margin-left: 25%;
 }
+
 
 .modal-container{
     width: 80%;
-    height: 50%;
     background: #FFF7D2;
     border-radius: 6px;
     padding: 4%;
@@ -40,16 +40,31 @@ li {
     place-items: center;
 }
 
-.closemodal{
+.closemodal, .infoButton{
     font-weight: bolder;
     background-color: #FFC700;
     border-style: none;
-    width: 6%;
+    width:fit-content;
     padding: 1%;
-    border-radius: 7px 7px 7px 7px;
+    margin: 1rem;
+    border-radius: 4px;
     box-shadow: 1px 1px 2px rgb(137, 129, 129) ;
+    text-align: center;
+    margin-left: auto;
+    display: block;
 }
 
+.editWorker{
+    font-weight: bolder;
+    background-color: #FFC700;
+    border-style: none;
+    width:fit-content;
+    padding: 1%;
+    margin: 1rem;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgb(137, 129, 129) ;
+    text-align: center;
+}
 .toUpdate{
     font-weight: bolder;
     background-color: #FFC700;
@@ -97,4 +112,9 @@ button:hover{
     color: #FFF7D2;
 }
 
-
+@media screen and (max-width: 720px){
+    .modal{
+        width: 100%;
+        margin-left: 0;
+    }
+}

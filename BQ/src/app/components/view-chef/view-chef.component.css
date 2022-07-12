@@ -42,11 +42,14 @@ h2{
     border-radius: 5px;
 }
 
-.buttonSection button:hover, .statusButton:hover{
+.buttonSection button:hover{
     background-color: #8D0000;
     color: #FFF7D2;
 }
 
+.statusButton:hover{
+    background-color:#43f82b;
+}
 .delete{
     display: flex;
     width: fit-content;
@@ -84,6 +87,7 @@ h2{
 }
 
 .divChangeStatus{
+    justify-content: center;
     display: flex;
     flex-direction: column;
 }
@@ -102,5 +106,37 @@ h2{
     margin-bottom: 5%;
 }
 
+@media screen and (max-width: 720px){
 
+    body {
+        background-image: url('../../../assets/rotateImg.png')
+    }
+
+    h2 {
+        font-size: large;
+    }
+
+    .orderContainer,.idOrder, .status{
+        font-size: small;
+    }
+
+    .delete{
+        margin-left: 95%;
+    }
+
+    .buttonSection{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40%;
+        margin: 5%;
+    }
+
+    .buttonSection button{
+        padding: 0.5rem
+    }
+
+    .dateExit{
+        font-size: small;
+    }
+}
 

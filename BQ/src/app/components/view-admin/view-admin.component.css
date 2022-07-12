@@ -1,14 +1,11 @@
-body{
-    margin: 0;
-    background-color: #FFD118;
-    display: flex;        
-    justify-content: center;
+body {
     background-image: url('../../../assets/background.png');
-    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
-    height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+    text-align: center;
 }
 
 .containt{
@@ -16,7 +13,8 @@ body{
     box-shadow: rgb(137, 129, 129) 3px 3px  5px;
     border: 1px solid rgb(137, 129, 129) ;
     backdrop-filter: blur(5px);
-    text-align: center;
+    padding: 3%;
+    justify-content: center;
 } 
 
 .view-header{
@@ -29,7 +27,7 @@ body{
 .logo{
     padding: 1%;
     margin: 1%;
-    width: 30%;
+    width: 15%;
 }
 
 p{
@@ -48,8 +46,8 @@ p{
     background-color: #FFC700;
     border-style: none;
     font-weight: bolder;
-    padding: 3%;
-    margin: 4%;
+    padding: 1rem;
+    margin: 2rem;
     border-radius: 7px 7px 7px 7px;
     box-shadow: 1px 1px 2px rgb(137, 129, 129) ;
 }
@@ -57,13 +55,14 @@ p{
 .editWorker, .deleteWorker{
     width: 32px;
     height: 32px;
-    background-color: #f4ede7db;
+    background-color: transparent;
     border-style: none;
     border-radius: 100%;
     color: #FFC700;
 }
 
 .editWorker:hover, .deleteWorker:hover{
+    background-color: #FFC700;
     color: #8D0000
 }
 
@@ -78,6 +77,7 @@ p{
 
 table{
     width: 90%;
+    
 }
 
 th{
@@ -93,6 +93,13 @@ input{
     border: 0;
     outline: none;
     font-size: 95%;
-    background-color: #f4ede7db;
+    background-color: transparent;
     text-align: center;
+}
+
+@media screen and (max-width: 720px){
+
+    body {
+        background-image: url('../../../assets/rotateImg.png')
+    }
 }

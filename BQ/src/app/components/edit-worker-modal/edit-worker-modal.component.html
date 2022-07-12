@@ -1,24 +1,26 @@
 <div class="modal">
     <div class="modal-container">
+        <div class="buttonSection">
         <button class="closemodal" (click)="onCloseModalEdit()">X</button>
-        <form [formGroup]= 'editWorkerForm'>
+        <button class="infoButton" (click)="getInfo()" >traer info</button>
+    </div>
+        <form>
             <ul>
                 <li>
                     <label for="id">No.:</label>
-                    <input type="text" name="id" formControlName="id" #idValue>
-                    <button ></button>
+                    <input type="text" name="id" #idValue value="{{id}}" #idWorker>
                 </li>
                 <li>
                     <label for="email">Email:</label>
-                    <input type="text" class="email" name="email" formControlName="email">
+                    <input type="text" class="email" name="email"  value="{{email}}" #emailWorker>
                 </li>
                 <li>
                     <label for="password">Password:</label>
-                    <input type="password" name="password" formControlName="password">
+                    <input type="password" name="password" value="{{password}}" #passwordWorker>
                 </li>
                 <li>
                     <label for="password">Rol:</label>
-                    <select name="rol" formControlName="rol">
+                    <select name="rol" value="{{rol}}" #roles>
                         <option value="">Seleccione el rol</option>
                         <option value="admin">Administrador</option>
                         <option value="waiter">Mesero</option>
@@ -26,7 +28,7 @@
                     </select>
                 </li>
                 <li class="button">
-                    <button type="submit" class="toUpdate">Actualizar</button>
+                    <button type="submit" class="editWorker" (click)="patchWorker(idWorker.value, emailWorker.value, passwordWorker.value, roles.value)">Actualizar</button>
                 </li>
             </ul>
         </form>

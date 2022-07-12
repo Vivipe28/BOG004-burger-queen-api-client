@@ -30,44 +30,33 @@ export class ViewAdminComponent implements OnInit {
 
   openModal(){
     this.modalSwitch = true;
-    //console.log(this.modalSwitch);
     
   }
 
   closeModal(){
     this.modalSwitch = false;
-    //console.log(this.modalSwitch);
   }
 
-  openModalEdit(){
+  openModalEdit(id:any){
     this.modalSwitchEdit = true; 
+    this.adminService.getWorker(id).subscribe(
+      res => {
+        this.getWorkerResponse = res
+      }
+    )
   }
 
   closeModalEdit(){
     this.modalSwitchEdit = false; 
   }
 
-  getWorker1(id: any){
-    this.adminService.getWorker(id).subscribe(
-      res => {
-        this.getWorkerResponse = res
-        localStorage.setItem('userId', JSON.stringify(this.getWorkerResponse.id))
-      }
-    )
-  }
-
   deleteW(id: any) {
     if (confirm('¿Estas seguro de eliminar el colaborador?')) {
       this.adminService.deleteWorkers(id).subscribe(
         (res: any) => {
-          this.workers = res
-          console.log(this.workers);
-        },
-        (err: any) => {
-          err
+
         }
       )
-      
     }
     this.adminService.getWorkers().subscribe(
       (res: any) => {

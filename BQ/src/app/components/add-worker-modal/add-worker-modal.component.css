@@ -1,6 +1,6 @@
 .modal{
-    width: auto;
-    position: fixed;
+    width:50%;
+    position:fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -9,12 +9,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: start;
+    margin-left: 25%;
 }
 
 .modal-container{
     width: 80%;
-    height: 42%;
     background: #FFF7D2;
     border-radius: 6px;
     padding: 4%;
@@ -29,7 +28,7 @@ form{
 ul{
     width: 90%;
     display: grid;
-    gap: 1%;
+    gap: 2%;
     place-items: center;
 }
 
@@ -48,6 +47,8 @@ li {
     padding: 1%;
     border-radius: 7px 7px 7px 7px;
     box-shadow: 1px 1px 2px rgb(137, 129, 129) ;
+    margin-left: auto;
+    display: block;
 }
 
 .addWorker{
@@ -97,4 +98,10 @@ button:hover{
     color: #FFF7D2;
 }
 
+@media screen and (max-width: 720px){
+    .modal{
+        width: 100%;
+        margin-left: 0;
+    }
+}
 

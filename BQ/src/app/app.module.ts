@@ -18,6 +18,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { AddWorkerModalComponent } from './components/add-worker-modal/add-worker-modal.component';
 import { MatIconModule } from '@angular/material/icon';
 import { EditWorkerModalComponent } from './components/edit-worker-modal/edit-worker-modal.component';
+import { FilterPipe } from './components/Pipes/filter.pipe';
 
 
 
@@ -32,6 +33,7 @@ import { EditWorkerModalComponent } from './components/edit-worker-modal/edit-wo
     Page404Component,
     AddWorkerModalComponent,
     EditWorkerModalComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

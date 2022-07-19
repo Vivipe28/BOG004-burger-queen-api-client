@@ -15,6 +15,8 @@ export class ViewChefComponent implements OnInit {
 
   deliveredOrder!:any;
 
+  filterOrder:any = '';
+
   show = false;
 
   statusOrder = false;

@@ -2,7 +2,9 @@
 
     <div class="orderListContainer">
         <h2>LISTA DE PEDIDOS</h2>
-        <div class="orderContainer" *ngFor="let item of responseOrdersArray">
+        <input type="text" placeholder="Buscar" class="form-control" name="filterOrder" [(ngModel)]="filterOrder">
+        
+        <div class="orderContainer" *ngFor="let item of responseOrdersArray | filter:filterOrder" >
             <button class="delete" (click)="deleteOrder(idOrder.value)">
                 <mat-icon class="deleteIcon">delete_forever</mat-icon>
             </button>

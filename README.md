@@ -23,9 +23,9 @@ Burger Queen es una aplicación web que busca satisfacer las necesidades de regi
 
 5. Crear, editar y eliminar ordenes y usuarios.
 
-<p style="text-align:center"> 
+<div style="text-align:center"> 
 ![out](https://raw.githubusercontent.com/Vivipe28/BOG004-burger-queen-api-client/main/BQ/src/assets/BQgif.gif)
-</p>
+</div>
 
 
 

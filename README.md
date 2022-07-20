@@ -74,7 +74,7 @@ waiter@burgerqueen.com
 
  ### Chef
 
- El chef cuenta con los mismos permisos que el mesero y adicionalmente tiene una herramienta exclusiva:
+ El chef cuenta con los mismos permisos del mesero y adicionalmente tiene una herramienta exclusiva:
 
  1. Registrar la hora de salida de cocina de la orden.
 

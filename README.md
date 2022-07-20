@@ -29,9 +29,24 @@ La aplicación es 100% responsiva y se encuentra diseñada para adaptarse a disp
 
 ## 2. Guía de Uso
 
-La aplicación ofrece tres diferentes perfiles de ingreso dependiendo del rol que el ususario desempeñe dentro del restaurante. Asber estos roles son:
+La aplicación ofrece tres diferentes perfiles de ingreso dependiendo del rol que el ususario desempeñe dentro del restaurante.
 
  ### Administrador
+
+ El rol de administrador puede navegar entre todas las secciones de la aplicación y tiene las siguientes potestades:
+
+ 1. Crear, editar y eliminar usuarios.
+
+ 2. Registrar, editar y eliminar pedidos.
+
+ 3. Consultar, filtrar, modificar el estado de preparación de las ordenes y eliminarlas.
+
+ Para ingresar a la aplicación con este perfil requiere los siguientes datos:
+
+ Correo
+```bash
+    admin@burgerqueen.com
+```
 
 
 

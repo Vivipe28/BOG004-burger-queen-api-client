@@ -37,12 +37,12 @@ p{
 }
 
 .addWorker:hover,
-.logOut:hover {
+.logOut:hover, .goMenu:hover {
     background-color: #8D0000;
     color: #FFF7D2;
 }
 
-.addWorker, .logOut{
+.addWorker, .logOut, .goMenu{
     background-color: #FFC700;
     border-style: none;
     font-weight: bolder;

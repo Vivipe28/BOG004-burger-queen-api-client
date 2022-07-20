@@ -53,7 +53,6 @@ export class AddWorkerModalComponent implements OnInit {
     this.adminService.getWorkers().subscribe(
       (res: any) => {
         this.viewAdminComponent.workers= res
-        console.log(res)
       },
       (err: any) => {
         err

@@ -11,7 +11,7 @@ import { Page404Component } from './components/page404/page404.component';
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component: ViewLoginComponent},
-  {path:'menu', component: MenuViewComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:"waiter"}},
+  {path:'menu', component: MenuViewComponent, canActivate:[AuthGuard], data: {roles:"waiter"}},
   {path:'chef', component: ViewChefComponent, canActivate:[AuthGuard], data: {roles: "chef"}},
   {path:'admin', component: ViewAdminComponent, canActivate:[AuthGuard, SecureInnerPagesGuard], data: {roles:"admin"}},
   {path:'error', component: Page404Component}

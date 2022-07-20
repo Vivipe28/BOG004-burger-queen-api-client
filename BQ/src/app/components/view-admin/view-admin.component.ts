@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/http.service';
 import { AdminViewService } from '../../services/admin-view.service'
-import { workersInterface } from '../models/Workers'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-admin',
@@ -15,13 +15,12 @@ export class ViewAdminComponent implements OnInit {
   workers: any = [];
   getWorkerResponse: any = {}; 
 
-  constructor(private adminService: AdminViewService, private authservice: AuthService) { }
+  constructor(private adminService: AdminViewService, private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.adminService.getWorkers().subscribe(
       (res: any) => {
         this.workers = res
-        console.log(res)
       },
       (err: any) => {
         err
@@ -65,6 +64,10 @@ export class ViewAdminComponent implements OnInit {
       (err: any) => {
         err
       })
+  }
+
+  goMenu(){
+    this.router.navigate(['/chef'])
   }
 
   logOut() {

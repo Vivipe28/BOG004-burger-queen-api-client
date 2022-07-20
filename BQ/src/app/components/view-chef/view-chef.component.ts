@@ -20,9 +20,7 @@ export class ViewChefComponent implements OnInit {
 
   show = false;
 
-  statusOrder = false;
-
-  color = false;
+  rolAdmin = false;
 
   constructor(private chefService: chefService, private authservice: AuthService, private router: Router) { }
 
@@ -31,6 +29,10 @@ export class ViewChefComponent implements OnInit {
       this.chefService.getOrders().subscribe((resp)=> {
         this.responseOrdersArray = resp
       })
+      let admin = this.authservice.getUser();
+      if(admin === '"admin"' ){
+        this.rolAdmin = true;
+      }
     }
 
   changeStatus(datetext:any, id:any, statusText:any){
@@ -70,9 +72,11 @@ export class ViewChefComponent implements OnInit {
     this.router.navigate(['/menu'])
   }
 
-  logOut() {
-    console.log('you are out');
-    this.authservice.logout()
+  adminView(){
+    this.router.navigate(['/admin'])
   }
-  
+
+  logOut() {
+    this.authservice.logout()
+  } 
 }

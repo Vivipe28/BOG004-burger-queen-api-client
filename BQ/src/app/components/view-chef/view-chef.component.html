@@ -41,6 +41,7 @@
         </div>
         <div class="buttonSection">
             <button class="goMenu" (click)="goMenu()">Menú</button>
+            <button class="adminView" *ngIf="rolAdmin === true" (click)="adminView()">Colaboradores</button>
             <button class="logOut" (click)="logOut()">Salir</button>
         </div>
     </div>

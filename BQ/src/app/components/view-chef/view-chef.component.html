@@ -2,9 +2,18 @@
 
     <div class="orderListContainer">
         <h2>LISTA DE PEDIDOS</h2>
-        <input type="text" placeholder="Buscar" class="form-control" name="filterOrder" [(ngModel)]="filterOrder">
-        
-        <div class="orderContainer" *ngFor="let item of responseOrdersArray | filter:filterOrder" >
+
+        <div class="search">
+            <mat-form-field appearance="outline" class="fld">
+                <mat-label>Buscar</mat-label>
+                <input matInput type="text" placeholder="Buscar" class="form-control" name="filterOrder"
+                    [(ngModel)]="filterOrder">
+                <mat-icon matSuffix class="my-icon">search</mat-icon>
+            </mat-form-field>
+        </div>
+
+
+        <div class="orderContainer" *ngFor="let item of responseOrdersArray | filter:filterOrder">
             <button class="delete" (click)="deleteOrder(idOrder.value)">
                 <mat-icon class="deleteIcon">delete_forever</mat-icon>
             </button>
@@ -23,8 +32,9 @@
                             class="status"></span>
                 </div>
                 <div class="divChangeStatus">
-                    <button class="statusButton" [style.backgroundColor]="status.value === 'Entregado' ? '#43f82b' : '#FFC700'"  (click)="changeStatus(doneDate, idOrder.value, status)"
-                        #statusButton >Ok</button>
+                    <button class="statusButton"
+                        [style.backgroundColor]="status.value === 'Entregado' ? '#43f82b' : '#FFC700'"
+                        (click)="changeStatus(doneDate, idOrder.value, status)" #statusButton>Ok</button>
                     <input type="text" class="dateExit" #doneDate value="{{item.exitDate}}">
                 </div>
             </div>

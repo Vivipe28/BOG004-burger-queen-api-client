@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { chefService } from 'src/app/services/chef.service';
 import { AuthService } from 'src/app/services/http.service';
@@ -7,7 +7,8 @@ import { status } from '../models/status';
 @Component({
   selector: 'app-view-chef',
   templateUrl: './view-chef.component.html',
-  styleUrls: ['./view-chef.component.css']
+  styleUrls: ['./view-chef.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ViewChefComponent implements OnInit {
 

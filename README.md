@@ -21,10 +21,17 @@ Burger Queen es una aplicación web que busca satisfacer las necesidades de regi
 
 4. Visualizar y filtrar las ordenes que ya fueron despachadas y las que se encuentran pendientes.
 
-5. Crear, editar y eliminar ordenes y usuarios.
-
+5. Crear, editar y eliminar ordenes y usuarios
 
 ![out](https://raw.githubusercontent.com/Vivipe28/BOG004-burger-queen-api-client/main/BQ/src/assets/BQgif.gif)
+
+La aplicación es 100% responsiva y se encuentra diseñada para adaptarse a dispositivos móviles como tablets y equipos de escritorio.
+
+## 2. Guía de Uso
+
+La aplicación ofrece tres diferentes perfiles de ingreso dependiendo del rol que el ususario desempeñe dentro del restaurante. Asber estos roles son:
+
+ ### Administrador
 
 
 

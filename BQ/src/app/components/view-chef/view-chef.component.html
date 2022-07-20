@@ -32,10 +32,11 @@
                             class="status"></span>
                 </div>
                 <div class="divChangeStatus">
-                    <button class="statusButton"
+                    <button class="statusButton" *ngIf="rolChef === true"
                         [style.backgroundColor]="status.value === 'Entregado' ? '#43f82b' : '#FFC700'"
                         (click)="changeStatus(doneDate, idOrder.value, status)" #statusButton>Ok</button>
                     <input type="text" class="dateExit" #doneDate value="{{item.exitDate}}">
+                    <label class="hourExit">Hora de Salida</label>
                 </div>
             </div>
         </div>

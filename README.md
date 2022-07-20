@@ -27,6 +27,8 @@ Burger Queen es una aplicación web que busca satisfacer las necesidades de regi
 
 La aplicación es 100% responsiva y se encuentra diseñada para adaptarse a dispositivos móviles como tablets y equipos de escritorio.
 
+De igual manera la aplicación se encuentra consumiendo una API REST para su funcionamiento.
+
 ## 2. Guía de Uso
 
 La aplicación ofrece tres diferentes perfiles de ingreso dependiendo del rol que el ususario desempeñe dentro del restaurante.
@@ -39,14 +41,61 @@ La aplicación ofrece tres diferentes perfiles de ingreso dependiendo del rol qu
 
  2. Registrar, editar y eliminar pedidos.
 
- 3. Consultar, filtrar, modificar el estado de preparación de las ordenes y eliminarlas.
+ 3. Consultar, filtrar y eliminar ordenes que ya esten en cocina.
 
  Para ingresar a la aplicación con este perfil requiere los siguientes datos:
 
  Correo
 ```bash
-    admin@burgerqueen.com
+admin@burgerqueen.com
 ```
+ Contraseña
+```bash
+123456
+```
+ ### Mesero
+
+ El mesero cuenta con permisos para ejecutar las siguientes tareas:
+
+ 1. Registrar, editar y eliminar pedidos.
+
+ 2. Consultar, filtrar y eliminar ordenes que ya esten en cocina.
+
+ Para ingresar a la aplicación con este perfil requiere los siguientes datos:
+
+ Correo
+```bash
+waiter@burgerqueen.com
+```
+ Contraseña
+```bash
+123456
+``` 
+
+ ### Chef
+
+ El chef cuenta con los mismos permisos que el mesero y adicionalmente tiene una herramienta exclusiva:
+
+ 1. Registrar la hora de salida de cocina de la orden.
+
+  Para ingresar a la aplicación con este perfil requiere los siguientes datos:
+
+ Correo
+```bash
+chef@burgerqueen.com
+```
+ Contraseña
+```bash
+123456
+``` 
+
+## 3. Tecnologías y herramientas
+
+<a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a><a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a>
+
+## 4. Autores
+
+⌨️ Hecho por [Milates12](https://github.com/Milates12) & [Vivipe28](https://github.com/Vivipe28)
 
 
 

@@ -22,6 +22,8 @@ export class ViewChefComponent implements OnInit {
 
   rolAdmin = false;
 
+  rolChef = false;
+
   constructor(private chefService: chefService, private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,6 +34,9 @@ export class ViewChefComponent implements OnInit {
       let admin = this.authservice.getUser();
       if(admin === '"admin"' ){
         this.rolAdmin = true;
+      }
+      if(admin === '"chef"'){
+        this.rolChef = true;
       }
     }
 
